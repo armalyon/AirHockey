@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/main_jar</output-path>
+    <root id="archive" name="main.jar">
+      <element id="module-output" name="AirHockey" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/FXGL-0.1.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
