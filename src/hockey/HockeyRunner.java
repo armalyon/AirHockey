@@ -20,8 +20,7 @@ import utils.Assets;
 
 import static collisions.BatBoundsCollision.getLeftBatCollision;
 import static collisions.BatBoundsCollision.getRightBatCollision;
-import static components.Ballinitializer.getBallLeftPosition;
-import static components.Ballinitializer.getBallRightPosition;
+import static components.Ballinitializer.*;
 import static components.TextFields.*;
 import static key_actions.LeftBatDownAction.getLeftBatDownAction;
 import static key_actions.LeftBatUpAction.getLeftBatUpAction;
@@ -82,7 +81,7 @@ public class HockeyRunner extends GameApplication {
         ball = ballinitializer.getBall(assets);
         getGameWorld().addEntities(leftBat, rightBat, ball);
         initKeyInput();
-        initColisions();
+        initCollisions();
     }
 
 
@@ -117,7 +116,6 @@ public class HockeyRunner extends GameApplication {
         startText = initStartText();
         getGameScene().addUINodes(player1controls, player2controls, startText, winText, restartText);
 
-
     }
 
     @Override
@@ -128,7 +126,6 @@ public class HockeyRunner extends GameApplication {
         countScore2();
         setGameEnd();
         restartBall();
-
 
     }
 
@@ -141,10 +138,9 @@ public class HockeyRunner extends GameApplication {
         input.addAction(getRestartGameAction(), KeyCode.SPACE);
     }
 
-    public void initColisions() {
+    public void initCollisions() {
         getPhysicsManager().addCollisionHandler(getLeftBatCollision(leftBat));
         getPhysicsManager().addCollisionHandler(getRightBatCollision(rightBat));
-
 
     }
 
@@ -161,32 +157,42 @@ public class HockeyRunner extends GameApplication {
     private void countScore1() {
         if (ball.getX() > SCREEN_WIDTH + 100) {
             ball = ballinitializer.getBall(assets);
-            ball.setPosition(getBallRightPosition());
+
+            if (rightBat.getY() < SCREEN_HEIGHT / 2) {
+                ball.setPosition(BALL_RIGHT_ALT_POSITION);
+            } else {
+                ball.setPosition(BALL_RIGHT_POSITION);
+            }
             score1.setValue(score1.get() + 1);
+
+
             getGameWorld().addEntity(ball);
         }
+
     }
 
 
     private void countScore2() {
         if (ball.getX() < -100) {
             ball = ballinitializer.getBall(assets);
-            ball.setPosition(getBallLeftPosition());
+
+            if (leftBat.getY() < SCREEN_HEIGHT / 2) {
+                ball.setPosition(BALL_LEFT_ALT_POSITION);
+            } else {
+                ball.setPosition(BALL_LEFT_POSITION);
+            }
+
             score2.setValue(score2.get() + 1);
+
+
             getGameWorld().addEntity(ball);
         }
 
     }
 
     private void setGameEnd() {
-        if (score1.get() == FINAL_SCORE) {
-            restartReadyStatus = true;
-            ball.setPosition(200, -200);
-            winText.setText(PLAYER1_WINS_TEXT);
-            restartText.setText(PRESS_SPACE_TO_RESTART);
-        }
+        if (score1.get() == FINAL_SCORE || score2.get() == FINAL_SCORE) {
 
-        if (score2.get() == FINAL_SCORE) {
             restartReadyStatus = true;
             ball.setPosition(200, -200);
             winText.setText(PLAYER2_WINS_TEXT);
@@ -205,7 +211,7 @@ public class HockeyRunner extends GameApplication {
     }
 
     private void restartBall() {
-        if (RestartGameAction.getBallRestart()){
+        if (RestartGameAction.getBallRestart()) {
             ball = ballinitializer.getBall(assets);
             getGameWorld().addEntity(ball);
             RestartGameAction.setBallRestart(false);
@@ -253,6 +259,4 @@ public class HockeyRunner extends GameApplication {
     public static void main(String[] args) {
         launch(args);
     }
-
-
 }
