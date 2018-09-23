@@ -12,7 +12,6 @@ public class LeftBatUpAction extends UserAction {
     private final static int UP_VELOCITY = -12;
 
 
-
     private LeftBatUpAction(String name, PhysicsEntity bat) {
         super(name);
         this.bat = bat;
@@ -21,7 +20,8 @@ public class LeftBatUpAction extends UserAction {
 
     @Override
     protected void onActionBegin() {
-        if (!HockeyRunner.isStartReadyStatus() && !HockeyRunner.isRestartReadyStatus())
+        if (!HockeyRunner.isStartReadyStatus() && !HockeyRunner.isRestartReadyStatus() &&
+                !PauseAction.isPausePerformed())
             bat.setLinearVelocity(0, UP_VELOCITY);
 
     }
@@ -29,7 +29,7 @@ public class LeftBatUpAction extends UserAction {
 
     @Override
     protected void onActionEnd() {
-       bat.setLinearVelocity(0,0);
+        bat.setLinearVelocity(0, 0);
     }
 
     public static LeftBatUpAction getLeftBatUpAction(PhysicsEntity bat) {

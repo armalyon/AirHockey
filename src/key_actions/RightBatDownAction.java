@@ -20,7 +20,8 @@ public class RightBatDownAction extends UserAction {
 
     @Override
     protected void onActionBegin() {
-        if (!HockeyRunner.isStartReadyStatus() && !HockeyRunner.isRestartReadyStatus())
+        if (!HockeyRunner.isStartReadyStatus() && !HockeyRunner.isRestartReadyStatus() &&
+                !PauseAction.isPausePerformed())
             bat.setLinearVelocity(0, DOWN_VELOCITY);
     }
 

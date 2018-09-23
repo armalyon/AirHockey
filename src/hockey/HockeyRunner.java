@@ -24,6 +24,7 @@ import static components.Ballinitializer.*;
 import static components.TextFields.*;
 import static key_actions.LeftBatDownAction.getLeftBatDownAction;
 import static key_actions.LeftBatUpAction.getLeftBatUpAction;
+import static key_actions.PauseAction.*;
 import static key_actions.RestartGameAction.getRestartGameAction;
 import static key_actions.RightBatDownAction.getRightBatDownAction;
 import static key_actions.RightBatUpAction.getRightBatUpAction;
@@ -44,9 +45,10 @@ public class HockeyRunner extends GameApplication {
     private PhysicsEntity ball;
     private static int ballDirection;
     private Point2D ballSpeed;
+    private Point2D ballSpeedBeforePause;
     private static IntegerProperty score1 = new SimpleIntegerProperty(0);
     private static IntegerProperty score2 = new SimpleIntegerProperty(0);
-    private static final int FINAL_SCORE = 5;
+    private static final int FINAL_SCORE = 3;
     private static boolean startReadyStatus = true;
     private static boolean restartReadyStatus = false;
     private static Text player1controls;
@@ -54,6 +56,10 @@ public class HockeyRunner extends GameApplication {
     private static Text startText;
     private static Text winText;
     private static Text restartText;
+    private static Text pausetext;
+    private static Text pauseControlText;
+
+    private static boolean pauseFlag = false;
 
 
     @Override
@@ -89,6 +95,7 @@ public class HockeyRunner extends GameApplication {
     protected void initInput() {
         input = getInputManager();
         input.addAction(StartGameAction.getStartGameAction(), KeyCode.ENTER);
+
     }
 
     @Override
@@ -106,15 +113,18 @@ public class HockeyRunner extends GameApplication {
     @Override
     protected void initUI() {
         getGameScene().addUINode(initScoreText());
-        getGameScene().addUINode(initScoreDivider());
-        getGameScene().addUINode(initScore1());
-        getGameScene().addUINode(initScore2());
+        getGameScene().addUINode(initScoreDividerText());
+        getGameScene().addUINode(initScore1Text());
+        getGameScene().addUINode(initScore2Text());
+        pausetext = initPauseText();
         restartText = initRestartText();
-        winText = initPlayerWins();
-        player1controls = initShowControls1();
-        player2controls = initShowControls2();
+        winText = initPlayerWinsText();
+        player1controls = initControls1Text();
+        player2controls = initControls2Text();
         startText = initStartText();
-        getGameScene().addUINodes(player1controls, player2controls, startText, winText, restartText);
+        pauseControlText = initPauseControlText();
+        getGameScene().addUINodes(player1controls, player2controls,
+                startText, winText, restartText, pausetext, pauseControlText);
 
     }
 
@@ -126,6 +136,7 @@ public class HockeyRunner extends GameApplication {
         countScore2();
         setGameEnd();
         restartBall();
+        pauseGame();
 
     }
 
@@ -136,6 +147,9 @@ public class HockeyRunner extends GameApplication {
         input.addAction(getRightBatUpAction(rightBat), KeyCode.UP);
         input.addAction(getRightBatDownAction(rightBat), KeyCode.DOWN);
         input.addAction(getRestartGameAction(), KeyCode.SPACE);
+        input.addAction(getPauseAction(), KeyCode.P);
+
+
     }
 
     public void initCollisions() {
@@ -150,37 +164,37 @@ public class HockeyRunner extends GameApplication {
         double ySpeed = ballSpeed.getY();
         if (xSpeed < 0) ballDirection = -1;
         if (xSpeed > 0) ballDirection = 1;
-        if (Math.abs(xSpeed) <= 3 && ySpeed != 0) ball.setLinearVelocity(ballDirection * 4, ySpeed);
+        if (Math.abs(xSpeed) <= 3 && ySpeed != 0) ball.setLinearVelocity(ballDirection * 5, ySpeed);
 
     }
 
     private void countScore1() {
-        if ((ball.getX() > SCREEN_WIDTH + 100)||
-                (ball.getX()>SCREEN_WIDTH/2&&(ball.getY()>SCREEN_HEIGHT || ball.getY()<0))) {
+        if (!restartReadyStatus && ball.getX() > SCREEN_WIDTH + 50) {
             ball = ballinitializer.getBall(assets);
             if (rightBat.getY() < SCREEN_HEIGHT / 2) {
                 ball.setPosition(BALL_RIGHT_ALT_POSITION);
             } else {
                 ball.setPosition(BALL_RIGHT_POSITION);
             }
-            score1.setValue(score1.get() + 1);
             getGameWorld().addEntity(ball);
+            score1.setValue(score1.get() + 1);
+
         }
 
     }
 
 
     private void countScore2() {
-        if (ball.getX() < -100 ||
-                (ball.getX()<SCREEN_WIDTH/2&&(ball.getY()>SCREEN_HEIGHT || ball.getY()<0))) {
+        if (!restartReadyStatus && ball.getX() < -50) {
             ball = ballinitializer.getBall(assets);
             if (leftBat.getY() < SCREEN_HEIGHT / 2) {
                 ball.setPosition(BALL_LEFT_ALT_POSITION);
             } else {
                 ball.setPosition(BALL_LEFT_POSITION);
             }
-            score2.setValue(score2.get() + 1);
             getGameWorld().addEntity(ball);
+            score2.setValue(score2.get() + 1);
+
         }
 
     }
@@ -189,8 +203,11 @@ public class HockeyRunner extends GameApplication {
         if (score1.get() == FINAL_SCORE || score2.get() == FINAL_SCORE) {
             restartReadyStatus = true;
             ball.setPosition(200, -200);
-            winText.setText(PLAYER2_WINS_TEXT);
             restartText.setText(PRESS_SPACE_TO_RESTART);
+            if (score1.get()==FINAL_SCORE){
+                winText.setText(PLAYER1_WINS_TEXT);
+            } else   winText.setText(PLAYER2_WINS_TEXT);
+
         }
 
 
@@ -201,15 +218,34 @@ public class HockeyRunner extends GameApplication {
             player1controls.setText("");
             player2controls.setText("");
             startText.setText("");
+            pauseControlText.setText("");
         }
     }
 
     private void restartBall() {
         if (RestartGameAction.getBallRestart()) {
+            RestartGameAction.setBallRestart(false);
             ball = ballinitializer.getBall(assets);
             getGameWorld().addEntity(ball);
-            RestartGameAction.setBallRestart(false);
         }
+    }
+
+    private void pauseGame() {
+        if (isPausePerformed() && !pauseFlag) {
+            ballSpeedBeforePause = ball.getLinearVelocity();
+            pauseFlag = true;
+            if (pauseFlag){
+            ball.setLinearVelocity(0, 0);
+            leftBat.setLinearVelocity(0, 0);
+            rightBat.setLinearVelocity(0, 0);}
+            pausetext.setText(PAUSED_TEXT);
+        }
+        if (!isPausePerformed() && pauseFlag) {
+            ball.setLinearVelocity(ballSpeedBeforePause);
+            pauseFlag = false;
+            pausetext.setText("");
+        }
+
     }
 
     public static IntegerProperty getScore1() {
@@ -228,6 +264,10 @@ public class HockeyRunner extends GameApplication {
         return restartReadyStatus;
     }
 
+    public static void setStartReadyStatus(boolean startReadyStatus) {
+        HockeyRunner.startReadyStatus = startReadyStatus;
+    }
+
     public static Text getWinText() {
         return winText;
     }
@@ -236,14 +276,9 @@ public class HockeyRunner extends GameApplication {
         return restartText;
     }
 
-    public static void setStartReadyStatus(boolean startReadyStatus) {
-        HockeyRunner.startReadyStatus = startReadyStatus;
-    }
-
     public static void setRestartReadyStatus(boolean restartReadyStatus) {
         HockeyRunner.restartReadyStatus = restartReadyStatus;
     }
-
 
     public static void main(String[] args) {
         launch(args);

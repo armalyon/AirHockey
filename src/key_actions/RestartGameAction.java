@@ -1,6 +1,7 @@
 package key_actions;
 
 import com.almasb.fxgl.event.UserAction;
+import javafx.beans.property.IntegerProperty;
 
 import static hockey.HockeyRunner.*;
 
@@ -10,10 +11,8 @@ public class RestartGameAction extends UserAction {
     private static final String name = "restart";
     private static RestartGameAction ourInstance = new RestartGameAction();
     private static boolean ballRestart = false;
-
-    public static RestartGameAction getInstance() {
-        return ourInstance;
-    }
+    private static IntegerProperty score1 = getScore1();
+    private static IntegerProperty score2 = getScore2();
 
     private RestartGameAction() {
         super(name);
@@ -30,7 +29,6 @@ public class RestartGameAction extends UserAction {
             setRestartReadyStatus(false);
             ballRestart = true;
         }
-
 
     }
 
