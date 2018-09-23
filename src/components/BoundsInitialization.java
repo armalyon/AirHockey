@@ -29,13 +29,13 @@ public class BoundsInitialization {
         PhysicsEntity lbBound;
         PhysicsEntity rtBound;
         PhysicsEntity rbBound;
-        topBound = new PhysicsEntity(Type.HOTIZONTAL_BOUNDS);
+        topBound = new PhysicsEntity(Type.HORIZONTAL_BOUNDS);
         topBound.setPosition(0, 0);
         topBound.setSceneView(assets.getAssets().loadTexture(TOP_BOUND_FILE));
         topBound.setBodyType(BodyType.STATIC);
         topBound.setCollidable(true);
 
-        bottomBound = new PhysicsEntity(Type.HOTIZONTAL_BOUNDS);
+        bottomBound = new PhysicsEntity(Type.HORIZONTAL_BOUNDS);
         bottomBound.setPosition(0, HockeyRunner.SCREEN_HEIGHT - HORIZONTAL_BOUND_HEIGHT);
         bottomBound.setSceneView(assets.getAssets().loadTexture(BOTTOM_BOUND_FILE));
         bottomBound.setBodyType(BodyType.STATIC);

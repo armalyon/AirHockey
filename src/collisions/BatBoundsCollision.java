@@ -27,30 +27,30 @@ public class BatBoundsCollision extends CollisionHandler {
 
     @Override
     protected void onCollision(Entity a, Entity b) {
-       reboundBat();
+        reboundBat();
+
     }
 
     @Override
     protected void onCollisionEnd(Entity a, Entity b) {
-        bat.setLinearVelocity(0,0);
+        bat.setLinearVelocity(0, 0);
     }
 
     public static BatBoundsCollision getLeftBatCollision(PhysicsEntity bat) {
-        instance = new BatBoundsCollision(Type.LEFT_BAT, Type.HOTIZONTAL_BOUNDS, bat);
-                        return instance;
-    }
-
-    public static BatBoundsCollision getRightBatCollision(PhysicsEntity bat) {
-        instance = new BatBoundsCollision(Type.RIGHT_BAT, Type.HOTIZONTAL_BOUNDS, bat);
+        instance = new BatBoundsCollision(Type.LEFT_BAT, Type.HORIZONTAL_BOUNDS, bat);
         return instance;
     }
 
-    private void reboundBat (){
-        Point2D p = bat.getPosition();
-        if (p.getY()< HockeyRunner.SCREEN_HEIGHT/2) bat.setLinearVelocity(0,4);
-        else  bat.setLinearVelocity(0, -4);
+    public static BatBoundsCollision getRightBatCollision(PhysicsEntity bat) {
+        instance = new BatBoundsCollision(Type.RIGHT_BAT, Type.HORIZONTAL_BOUNDS, bat);
+        return instance;
     }
 
+    private void reboundBat() {
+        Point2D p = bat.getPosition();
+        if (p.getY() < HockeyRunner.SCREEN_HEIGHT / 2) bat.setLinearVelocity(0, 4);
+        else bat.setLinearVelocity(0, -4);
+    }
 
 
 }

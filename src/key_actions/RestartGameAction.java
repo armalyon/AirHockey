@@ -22,7 +22,6 @@ public class RestartGameAction extends UserAction {
 
     @Override
     protected void onActionBegin() {
-
         if (isRestartReadyStatus()) {
             getScore1().set(0);
             getScore2().set(0);
@@ -30,7 +29,6 @@ public class RestartGameAction extends UserAction {
             getRestartText().setText("");
             setRestartReadyStatus(false);
             ballRestart = true;
-
         }
 
 

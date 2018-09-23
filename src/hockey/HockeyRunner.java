@@ -155,17 +155,15 @@ public class HockeyRunner extends GameApplication {
     }
 
     private void countScore1() {
-        if (ball.getX() > SCREEN_WIDTH + 100) {
+        if ((ball.getX() > SCREEN_WIDTH + 100)||
+                (ball.getX()>SCREEN_WIDTH/2&&(ball.getY()>SCREEN_HEIGHT || ball.getY()<0))) {
             ball = ballinitializer.getBall(assets);
-
             if (rightBat.getY() < SCREEN_HEIGHT / 2) {
                 ball.setPosition(BALL_RIGHT_ALT_POSITION);
             } else {
                 ball.setPosition(BALL_RIGHT_POSITION);
             }
             score1.setValue(score1.get() + 1);
-
-
             getGameWorld().addEntity(ball);
         }
 
@@ -173,18 +171,15 @@ public class HockeyRunner extends GameApplication {
 
 
     private void countScore2() {
-        if (ball.getX() < -100) {
+        if (ball.getX() < -100 ||
+                (ball.getX()<SCREEN_WIDTH/2&&(ball.getY()>SCREEN_HEIGHT || ball.getY()<0))) {
             ball = ballinitializer.getBall(assets);
-
             if (leftBat.getY() < SCREEN_HEIGHT / 2) {
                 ball.setPosition(BALL_LEFT_ALT_POSITION);
             } else {
                 ball.setPosition(BALL_LEFT_POSITION);
             }
-
             score2.setValue(score2.get() + 1);
-
-
             getGameWorld().addEntity(ball);
         }
 
@@ -192,7 +187,6 @@ public class HockeyRunner extends GameApplication {
 
     private void setGameEnd() {
         if (score1.get() == FINAL_SCORE || score2.get() == FINAL_SCORE) {
-
             restartReadyStatus = true;
             ball.setPosition(200, -200);
             winText.setText(PLAYER2_WINS_TEXT);
@@ -218,7 +212,6 @@ public class HockeyRunner extends GameApplication {
         }
     }
 
-
     public static IntegerProperty getScore1() {
         return score1;
     }
@@ -241,10 +234,6 @@ public class HockeyRunner extends GameApplication {
 
     public static Text getRestartText() {
         return restartText;
-    }
-
-    public PhysicsEntity getBall() {
-        return ball;
     }
 
     public static void setStartReadyStatus(boolean startReadyStatus) {
