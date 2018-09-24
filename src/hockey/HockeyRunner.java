@@ -34,7 +34,6 @@ import static model.components.TextFields.*;
 
 public class HockeyRunner extends GameApplication {
     public static final int FINAL_SCORE = 3;
-    private static BatInitializer batInitializer = new BatInitializer();
     public static final int SCREEN_WIDTH = 1200;
     public static final int SCREEN_HEIGHT = 675;
     private static final String TITLE = "Hockey";
@@ -70,7 +69,6 @@ public class HockeyRunner extends GameApplication {
         gameSettings.setShowFPS(false);
         gameSettings.setIconFileName(ICON_FILE);
         gameSettings.setDefaultFontName(FONT_FILE_NAME);
-
     }
 
 
@@ -79,15 +77,14 @@ public class HockeyRunner extends GameApplication {
         getPhysicsManager().setGravity(0, 0);
         new BackgroundInitializator(assets, this);
         new BoundsInitialization(assets, this);
-        leftBat = batInitializer.getLeftBat(assets);
-        rightBat = batInitializer.getRightBat(assets);
+        leftBat = BatInitializer.getLeftBat(assets);
+        rightBat = BatInitializer.getRightBat(assets);
         ball = Ballinitializer.getBall(assets);
         getGameWorld().addEntities(leftBat, rightBat, ball);
         initKeyInput();
         initCollisions();
         ballSpeedCorrection = new BallSpeedCorrection();
         pauseFunction = new PauseFunction();
-
     }
 
 

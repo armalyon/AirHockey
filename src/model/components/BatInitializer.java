@@ -17,11 +17,10 @@ public class BatInitializer {
     private static double BATS_Y = HockeyRunner.SCREEN_HEIGHT / 2 - BAT_HEIGHT / 2;
 
 
-
     public BatInitializer() {
     }
 
-    public PhysicsEntity getLeftBat(Assets assets) {
+    public static PhysicsEntity getLeftBat(Assets assets) {
         PhysicsEntity leftBat = new PhysicsEntity(Type.LEFT_BAT);
         leftBat.setPosition(LEFT_BAT_X, BATS_Y);
         leftBat.setSceneView(assets.getAssets().loadTexture(LEFT_BAT_FILE));
@@ -30,7 +29,7 @@ public class BatInitializer {
         return leftBat;
     }
 
-    public PhysicsEntity getRightBat(Assets assets) {
+    public static PhysicsEntity getRightBat(Assets assets) {
         PhysicsEntity rightBat = new PhysicsEntity(Type.RIGHT_BAT);
         rightBat.setPosition(RIGHT_BAT_X, BATS_Y);
         rightBat.setSceneView(assets.getAssets().loadTexture(RIGH_BAT_FILE));
@@ -39,4 +38,4 @@ public class BatInitializer {
         return rightBat;
     }
 
-    }
+}
