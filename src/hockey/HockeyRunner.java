@@ -6,6 +6,7 @@ import com.almasb.fxgl.event.InputManager;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
 import controller.corrections.BallSpeedCorrection;
+import controller.game_cases.ReststartBall;
 import model.components.BackgroundInitializator;
 import model.components.Ballinitializer;
 import model.components.BatInitializer;
@@ -33,7 +34,7 @@ import static controller.key_actions.RightBatUpAction.getRightBatUpAction;
 
 public class HockeyRunner extends GameApplication {
     private static BatInitializer batInitializer = new BatInitializer();
-    private Ballinitializer ballinitializer = new Ballinitializer();
+    private static Ballinitializer ballinitializer = new Ballinitializer();
     public static final int SCREEN_WIDTH = 1200;
     public static final int SCREEN_HEIGHT = 675;
     private static final String TITLE = "Hockey";
@@ -44,8 +45,6 @@ public class HockeyRunner extends GameApplication {
     private PhysicsEntity leftBat;
     private PhysicsEntity rightBat;
     private PhysicsEntity ball;
-    private static int ballDirection;
-    private Point2D ballSpeed;
     private Point2D ballSpeedBeforePause;
     private static IntegerProperty score1 = new SimpleIntegerProperty(0);
     private static IntegerProperty score2 = new SimpleIntegerProperty(0);
@@ -139,7 +138,7 @@ public class HockeyRunner extends GameApplication {
         countScore1();
         countScore2();
         setGameEnd();
-        restartBall();
+        ReststartBall.restartBall(ball, getGameWorld(), assets);
         pauseGame();
 
     }
@@ -217,13 +216,6 @@ public class HockeyRunner extends GameApplication {
         }
     }
 
-    private void restartBall() {
-        if (RestartGameAction.getBallRestart()) {
-            RestartGameAction.setBallRestart(false);
-            ball = ballinitializer.getBall(assets);
-            getGameWorld().addEntity(ball);
-        }
-    }
 
     private void pauseGame() {
         if (isPausePerformed() && !pauseFlag) {
@@ -274,6 +266,15 @@ public class HockeyRunner extends GameApplication {
     public static void setRestartReadyStatus(boolean restartReadyStatus) {
         HockeyRunner.restartReadyStatus = restartReadyStatus;
     }
+
+    public PhysicsEntity getBall() {
+        return ball;
+    }
+
+    public static Ballinitializer getBallinitializer() {
+        return ballinitializer;
+    }
+
 
     public static void main(String[] args) {
         launch(args);
