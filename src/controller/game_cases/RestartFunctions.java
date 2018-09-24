@@ -1,6 +1,7 @@
 package controller.game_cases;
 
 import com.almasb.fxgl.GameWorld;
+import hockey.HockeyRunner;
 import javafx.beans.property.IntegerProperty;
 import javafx.scene.text.Text;
 import model.components.Ballinitializer;
@@ -26,8 +27,11 @@ public class RestartFunctions {
         }
     }
 
-    public static void startNewGame(boolean startReadyStatus, Text player1controls, Text player2controls,
-                                    Text startText, Text pauseControlText ) {
+    public static void startNewGame(boolean startReadyStatus) {
+        Text player1controls = getPlayer1controls();
+        Text player2controls = getPlayer2controls();
+        Text startText = getStartText();
+        Text pauseControlText = getPauseControlText();
         if (!startReadyStatus) {
             player1controls.setText("");
             player2controls.setText("");

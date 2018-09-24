@@ -2,41 +2,39 @@ package hockey;
 
 
 import com.almasb.fxgl.GameApplication;
-
 import com.almasb.fxgl.event.InputManager;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
 import controller.corrections.BallSpeedCorrection;
 import controller.game_cases.PauseFunction;
-
-import model.components.BackgroundInitializator;
-import model.components.Ballinitializer;
-import model.components.BatInitializer;
-import model.components.BoundsInitialization;
+import controller.key_actions.StartGameAction;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
-import controller.key_actions.StartGameAction;
+import model.components.BackgroundInitializator;
+import model.components.Ballinitializer;
+import model.components.BatInitializer;
+import model.components.BoundsInitialization;
 import utils.Assets;
+
 import static controller.collisions.BatBoundsCollision.getLeftBatCollision;
 import static controller.collisions.BatBoundsCollision.getRightBatCollision;
 import static controller.game_cases.RestartFunctions.*;
 import static controller.game_cases.ScoreCounter.countScore1;
 import static controller.game_cases.ScoreCounter.countScore2;
-
-import static model.components.TextFields.*;
 import static controller.key_actions.LeftBatDownAction.getLeftBatDownAction;
 import static controller.key_actions.LeftBatUpAction.getLeftBatUpAction;
-import static controller.key_actions.PauseAction.*;
+import static controller.key_actions.PauseAction.getPauseAction;
 import static controller.key_actions.RestartGameAction.getRestartGameAction;
 import static controller.key_actions.RightBatDownAction.getRightBatDownAction;
 import static controller.key_actions.RightBatUpAction.getRightBatUpAction;
+import static model.components.TextFields.*;
 
 
 public class HockeyRunner extends GameApplication {
+    public static final int FINAL_SCORE = 3;
     private static BatInitializer batInitializer = new BatInitializer();
-
     public static final int SCREEN_WIDTH = 1200;
     public static final int SCREEN_HEIGHT = 675;
     private static final String TITLE = "Hockey";
@@ -49,7 +47,6 @@ public class HockeyRunner extends GameApplication {
     private static PhysicsEntity ball;
     private static IntegerProperty score1 = new SimpleIntegerProperty(0);
     private static IntegerProperty score2 = new SimpleIntegerProperty(0);
-    public static final int FINAL_SCORE = 2;
     private static boolean startReadyStatus = true;
     private static Text player1controls;
     private static Text player2controls;
@@ -60,8 +57,6 @@ public class HockeyRunner extends GameApplication {
     private static Text pauseControlText;
     private BallSpeedCorrection ballSpeedCorrection;
     private PauseFunction pauseFunction;
-
-
 
 
     @Override
@@ -100,7 +95,6 @@ public class HockeyRunner extends GameApplication {
     protected void initInput() {
         input = getInputManager();
         input.addAction(StartGameAction.getStartGameAction(), KeyCode.ENTER);
-
     }
 
     @Override
@@ -110,7 +104,8 @@ public class HockeyRunner extends GameApplication {
 
 
     @Override
-    protected void initPhysics() {}
+    protected void initPhysics() {
+    }
 
 
     @Override
@@ -128,19 +123,17 @@ public class HockeyRunner extends GameApplication {
         pauseControlText = initPauseControlText();
         getGameScene().addUINodes(player1controls, player2controls,
                 startText, winText, restartText, pausetext, pauseControlText);
-
     }
 
     @Override
     protected void onUpdate() {
-        startNewGame(startReadyStatus, player1controls, player2controls, startText, pauseControlText);
+        startNewGame(startReadyStatus);
         ballSpeedCorrection.ballSpeedCorrection(ball);
         countScore1(getGameWorld(), assets);
         countScore2(getGameWorld(), assets);
         setGameEnd();
         restartBall(getGameWorld(), assets);
         pauseFunction.pauseGame();
-
     }
 
 
@@ -151,8 +144,6 @@ public class HockeyRunner extends GameApplication {
         input.addAction(getRightBatDownAction(rightBat), KeyCode.DOWN);
         input.addAction(getRestartGameAction(), KeyCode.SPACE);
         input.addAction(getPauseAction(), KeyCode.P);
-
-
     }
 
     public void initCollisions() {
@@ -210,6 +201,10 @@ public class HockeyRunner extends GameApplication {
         return player2controls;
     }
 
+    public static Text getPauseControlText() {
+        return pauseControlText;
+    }
+
     public static Text getStartText() {
         return startText;
     }
@@ -217,6 +212,7 @@ public class HockeyRunner extends GameApplication {
     public static Text getPausetext() {
         return pausetext;
     }
+
 
     public static void main(String[] args) {
         launch(args);
