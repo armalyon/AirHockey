@@ -1,4 +1,4 @@
-package key_actions;
+package controller.key_actions;
 
 import com.almasb.fxgl.event.UserAction;
 import com.almasb.fxgl.physics.PhysicsEntity;

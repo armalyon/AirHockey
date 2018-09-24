@@ -5,29 +5,30 @@ import com.almasb.fxgl.GameApplication;
 import com.almasb.fxgl.event.InputManager;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
-import components.BackgroundInitializator;
-import components.Ballinitializer;
-import components.BatInitializer;
-import components.BoundsInitialization;
+import controller.corrections.BallSpeedCorrection;
+import model.components.BackgroundInitializator;
+import model.components.Ballinitializer;
+import model.components.BatInitializer;
+import model.components.BoundsInitialization;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
-import key_actions.RestartGameAction;
-import key_actions.StartGameAction;
+import controller.key_actions.RestartGameAction;
+import controller.key_actions.StartGameAction;
 import utils.Assets;
 
-import static collisions.BatBoundsCollision.getLeftBatCollision;
-import static collisions.BatBoundsCollision.getRightBatCollision;
-import static components.Ballinitializer.*;
-import static components.TextFields.*;
-import static key_actions.LeftBatDownAction.getLeftBatDownAction;
-import static key_actions.LeftBatUpAction.getLeftBatUpAction;
-import static key_actions.PauseAction.*;
-import static key_actions.RestartGameAction.getRestartGameAction;
-import static key_actions.RightBatDownAction.getRightBatDownAction;
-import static key_actions.RightBatUpAction.getRightBatUpAction;
+import static controller.collisions.BatBoundsCollision.getLeftBatCollision;
+import static controller.collisions.BatBoundsCollision.getRightBatCollision;
+import static model.components.Ballinitializer.*;
+import static model.components.TextFields.*;
+import static controller.key_actions.LeftBatDownAction.getLeftBatDownAction;
+import static controller.key_actions.LeftBatUpAction.getLeftBatUpAction;
+import static controller.key_actions.PauseAction.*;
+import static controller.key_actions.RestartGameAction.getRestartGameAction;
+import static controller.key_actions.RightBatDownAction.getRightBatDownAction;
+import static controller.key_actions.RightBatUpAction.getRightBatUpAction;
 
 
 public class HockeyRunner extends GameApplication {
@@ -58,6 +59,7 @@ public class HockeyRunner extends GameApplication {
     private static Text restartText;
     private static Text pausetext;
     private static Text pauseControlText;
+    private BallSpeedCorrection ballSpeedCorrection;
 
     private static boolean pauseFlag = false;
 
@@ -88,6 +90,8 @@ public class HockeyRunner extends GameApplication {
         getGameWorld().addEntities(leftBat, rightBat, ball);
         initKeyInput();
         initCollisions();
+        ballSpeedCorrection = new BallSpeedCorrection();
+
     }
 
 
@@ -131,7 +135,7 @@ public class HockeyRunner extends GameApplication {
     @Override
     protected void onUpdate() {
         startNewGame();
-        ballHorizontalSpeedCorrection();
+        ballSpeedCorrection.ballSpeedCorrection(ball);
         countScore1();
         countScore2();
         setGameEnd();
@@ -158,15 +162,6 @@ public class HockeyRunner extends GameApplication {
 
     }
 
-    private void ballHorizontalSpeedCorrection() {
-        ballSpeed = ball.getLinearVelocity();
-        double xSpeed = ballSpeed.getX();
-        double ySpeed = ballSpeed.getY();
-        if (xSpeed < 0) ballDirection = -1;
-        if (xSpeed > 0) ballDirection = 1;
-        if (Math.abs(xSpeed) <= 3 && ySpeed != 0) ball.setLinearVelocity(ballDirection * 5, ySpeed);
-
-    }
 
     private void countScore1() {
         if (!restartReadyStatus && ball.getX() > SCREEN_WIDTH + 50) {
@@ -235,9 +230,9 @@ public class HockeyRunner extends GameApplication {
             ballSpeedBeforePause = ball.getLinearVelocity();
             pauseFlag = true;
             if (pauseFlag){
-            ball.setLinearVelocity(0, 0);
-            leftBat.setLinearVelocity(0, 0);
-            rightBat.setLinearVelocity(0, 0);}
+                ball.setLinearVelocity(0, 0);
+                leftBat.setLinearVelocity(0, 0);
+                rightBat.setLinearVelocity(0, 0);}
             pausetext.setText(PAUSED_TEXT);
         }
         if (!isPausePerformed() && pauseFlag) {

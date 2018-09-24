@@ -1,4 +1,4 @@
-package hockey;
+package model;
 
 
 import com.almasb.fxgl.entity.EntityType;

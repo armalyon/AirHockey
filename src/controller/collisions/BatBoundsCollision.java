@@ -1,11 +1,11 @@
-package collisions;
+package controller.collisions;
 
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityType;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import hockey.HockeyRunner;
-import hockey.Type;
+import model.Type;
 import javafx.geometry.Point2D;
 
 

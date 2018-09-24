@@ -1,9 +1,9 @@
-package components;
+package model.components;
 
 import com.almasb.fxgl.effect.ParticleEntity;
 import com.almasb.fxgl.entity.Entity;
 import hockey.HockeyRunner;
-import hockey.Type;
+import model.Type;
 import utils.Assets;
 
 

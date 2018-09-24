@@ -1,4 +1,4 @@
-package components;
+package model.components;
 
 import hockey.HockeyRunner;
 import javafx.scene.paint.Paint;

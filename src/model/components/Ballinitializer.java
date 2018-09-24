@@ -1,9 +1,9 @@
-package components;
+package model.components;
 
 import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.physics.PhysicsManager;
 import hockey.HockeyRunner;
-import hockey.Type;
+import model.Type;
 import javafx.geometry.Point2D;
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.dynamics.BodyType;

@@ -1,8 +1,8 @@
-package components;
+package model.components;
 
 import com.almasb.fxgl.physics.PhysicsEntity;
 import hockey.HockeyRunner;
-import hockey.Type;
+import model.Type;
 import org.jbox2d.dynamics.BodyType;
 import utils.Assets;
 
