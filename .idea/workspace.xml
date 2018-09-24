@@ -34,13 +34,10 @@
       <change afterPath="$PROJECT_DIR$/src/assets/ui/fonts/Halogen Gas Lights.otf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/assets/ui/icons/Thumbs.db" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/assets/ui/icons/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hockey/HockeyRunner.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/utils/Assets.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/system/Readme.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/system/fxgl.bundle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hockey/HockeyRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hockey/HockeyRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hockey/.idea/artifacts/main_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hockey/.idea/compiler.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hockey/.idea/encodings.xml" beforeDir="false" />
@@ -549,7 +546,7 @@
           <entry key="class" value="12" />
           <entry key="gitignore" value="2" />
           <entry key="iml" value="1" />
-          <entry key="java" value="86" />
+          <entry key="java" value="87" />
           <entry key="log" value="3" />
           <entry key="properties" value="1" />
           <entry key="txt" value="2" />
@@ -560,7 +557,7 @@
         <counts>
           <entry key="CLASS" value="12" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="86" />
+          <entry key="JAVA" value="87" />
           <entry key="Log" value="2" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Properties" value="1" />
@@ -571,13 +568,13 @@
         <counts>
           <entry key="dummy" value="18" />
           <entry key="gitignore" value="30" />
-          <entry key="java" value="3528" />
+          <entry key="java" value="3536" />
           <entry key="log" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3528" />
+          <entry key="JAVA" value="3536" />
           <entry key="Log" value="2" />
           <entry key="PLAIN_TEXT" value="49" />
         </counts>
@@ -594,8 +591,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hockey/HockeyRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="138" column="42" selection-start-line="138" selection-start-column="42" selection-end-line="138" selection-end-column="42" />
+            <state relative-caret-position="329">
+              <caret line="204" column="32" lean-forward="true" selection-start-line="204" selection-start-column="32" selection-end-line="204" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4035#4036#0" expanded="true" />
@@ -624,10 +621,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java">
+        <entry file="file://$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="374">
+              <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -711,10 +708,10 @@
         <option value="$PROJECT_DIR$/src/controller/key_actions/RightBatUpAction.java" />
         <option value="$PROJECT_DIR$/src/controller/key_actions/RestartGameAction.java" />
         <option value="$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java" />
-        <option value="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" />
         <option value="$PROJECT_DIR$/src/model/components/Ballinitializer.java" />
-        <option value="$PROJECT_DIR$/src/hockey/HockeyRunner.java" />
+        <option value="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" />
         <option value="$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java" />
+        <option value="$PROJECT_DIR$/src/hockey/HockeyRunner.java" />
       </list>
     </option>
   </component>
@@ -724,7 +721,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="555" />
     <option name="width" value="1380" />
     <option name="height" value="780" />
@@ -808,7 +805,7 @@
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="hockey" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537825795618" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537825803254" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -909,7 +906,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51512000" />
+    <option name="totallyTimeSpent" value="51753000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -921,10 +918,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26941746" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26941746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -939,10 +936,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290993" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3290993" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3290993" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3290993" />
-      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.3290993" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3290993" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1283,16 +1280,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/components/Ballinitializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -1303,10 +1290,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="108">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1315,8 +1312,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hockey/HockeyRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="138" column="42" selection-start-line="138" selection-start-column="42" selection-end-line="138" selection-end-column="42" />
+        <state relative-caret-position="329">
+          <caret line="204" column="32" lean-forward="true" selection-start-line="204" selection-start-column="32" selection-end-line="204" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4035#4036#0" expanded="true" />

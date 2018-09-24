@@ -161,9 +161,6 @@ public class HockeyRunner extends GameApplication {
 
     }
 
-
-
-
     public static IntegerProperty getScore1() {
         return score1;
     }
