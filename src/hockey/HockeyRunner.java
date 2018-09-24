@@ -7,6 +7,7 @@ import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
 import controller.corrections.BallSpeedCorrection;
 import controller.game_cases.PauseFunction;
+import controller.game_cases.RestartFunctions;
 import model.components.BackgroundInitializator;
 import model.components.Ballinitializer;
 import model.components.BatInitializer;
@@ -45,9 +46,9 @@ public class HockeyRunner extends GameApplication {
     private static PhysicsEntity ball;
     private static IntegerProperty score1 = new SimpleIntegerProperty(0);
     private static IntegerProperty score2 = new SimpleIntegerProperty(0);
-    private static final int FINAL_SCORE = 3;
+    private static final int FINAL_SCORE = 1;
     private static boolean startReadyStatus = true;
-    private static boolean restartReadyStatus = false;
+
     private static Text player1controls;
     private static Text player2controls;
     private static Text startText;
@@ -135,7 +136,7 @@ public class HockeyRunner extends GameApplication {
         countScore1();
         countScore2();
         setGameEnd();
-        restartBall(ball, getGameWorld(), assets);
+        restartBall(getGameWorld(), assets);
         pauseFunction.pauseGame();
 
     }
@@ -160,7 +161,7 @@ public class HockeyRunner extends GameApplication {
 
 
     private void countScore1() {
-        if (!restartReadyStatus && ball.getX() > SCREEN_WIDTH + 50) {
+        if (!isRestartReadyStatus() && ball.getX() > SCREEN_WIDTH + 50) {
             ball = ballinitializer.getBall(assets);
             if (rightBat.getY() < SCREEN_HEIGHT / 2) {
                 ball.setPosition(BALL_RIGHT_ALT_POSITION);
@@ -176,7 +177,7 @@ public class HockeyRunner extends GameApplication {
 
 
     private void countScore2() {
-        if (!restartReadyStatus && ball.getX() < -50) {
+        if (!isStartReadyStatus() && ball.getX() < -50) {
             ball = ballinitializer.getBall(assets);
             if (leftBat.getY() < SCREEN_HEIGHT / 2) {
                 ball.setPosition(BALL_LEFT_ALT_POSITION);
@@ -185,23 +186,20 @@ public class HockeyRunner extends GameApplication {
             }
             getGameWorld().addEntity(ball);
             score2.setValue(score2.get() + 1);
-
         }
-
     }
+
+
 
     private void setGameEnd() {
         if (score1.get() == FINAL_SCORE || score2.get() == FINAL_SCORE) {
-            restartReadyStatus = true;
+            setRestartReadyStatus(true);
             ball.setPosition(200, -200);
             restartText.setText(PRESS_SPACE_TO_RESTART);
             if (score1.get()==FINAL_SCORE){
                 winText.setText(PLAYER1_WINS_TEXT);
             } else   winText.setText(PLAYER2_WINS_TEXT);
-
         }
-
-
     }
 
 
@@ -217,10 +215,6 @@ public class HockeyRunner extends GameApplication {
         return startReadyStatus;
     }
 
-    public static boolean isRestartReadyStatus() {
-        return restartReadyStatus;
-    }
-
     public static void setStartReadyStatus(boolean startReadyStatus) {
         HockeyRunner.startReadyStatus = startReadyStatus;
     }
@@ -233,10 +227,6 @@ public class HockeyRunner extends GameApplication {
         return restartText;
     }
 
-    public static void setRestartReadyStatus(boolean restartReadyStatus) {
-        HockeyRunner.restartReadyStatus = restartReadyStatus;
-    }
-
     public static PhysicsEntity getLeftBat() {
         return leftBat;
     }
@@ -247,6 +237,10 @@ public class HockeyRunner extends GameApplication {
 
     public static PhysicsEntity getBall() {
         return ball;
+    }
+
+    public static void setBall(PhysicsEntity ball) {
+        HockeyRunner.ball = ball;
     }
 
     public static Ballinitializer getBallinitializer() {

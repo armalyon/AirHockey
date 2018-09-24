@@ -2,7 +2,7 @@ package controller.key_actions;
 
 import com.almasb.fxgl.event.UserAction;
 
-import static hockey.HockeyRunner.isRestartReadyStatus;
+import static controller.game_cases.RestartFunctions.*;
 import static hockey.HockeyRunner.isStartReadyStatus;
 
 public class PauseAction extends UserAction {

@@ -1,6 +1,7 @@
 package controller.game_cases;
 
 import com.almasb.fxgl.GameWorld;
+import hockey.HockeyRunner;
 import javafx.scene.text.Text;
 import utils.Assets;
 import com.almasb.fxgl.physics.PhysicsEntity;
@@ -10,12 +11,17 @@ import controller.key_actions.RestartGameAction;
 import static hockey.HockeyRunner.*;
 
 public class RestartFunctions {
+    private static boolean restartReadyStatus = false;
 
 
-    public static void restartBall(PhysicsEntity ball, GameWorld gameWorld, Assets assets) {
+
+
+
+    public static void restartBall( GameWorld gameWorld, Assets assets) {
         if (RestartGameAction.getBallRestart()) {
             RestartGameAction.setBallRestart(false);
-            ball = getBallinitializer().getBall(assets);
+            PhysicsEntity ball  = getBallinitializer().getBall(assets);
+            HockeyRunner.setBall(ball);
             gameWorld.addEntity(ball);
         }
     }
@@ -28,5 +34,13 @@ public class RestartFunctions {
             startText.setText("");
             pauseControlText.setText("");
         }
+    }
+
+    public static boolean isRestartReadyStatus() {
+        return restartReadyStatus;
+    }
+
+    public static void setRestartReadyStatus(boolean restartReadyStatus) {
+        RestartFunctions.restartReadyStatus = restartReadyStatus;
     }
 }

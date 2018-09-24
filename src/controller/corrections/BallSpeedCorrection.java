@@ -15,8 +15,7 @@ public class BallSpeedCorrection {
         if (xSpeed < 0) ballDirection = -1;
         if (xSpeed > 0) ballDirection = 1;
         if (Math.abs(xSpeed) <= 3 && ySpeed != 0) ball.setLinearVelocity(ballDirection * 5, ySpeed);
-
-    }
+        }
 
 
 }

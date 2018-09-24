@@ -4,6 +4,8 @@ import com.almasb.fxgl.event.UserAction;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import hockey.HockeyRunner;
 
+import static controller.game_cases.RestartFunctions.isRestartReadyStatus;
+
 public class RightBatDownAction extends UserAction {
 
     private PhysicsEntity bat;
@@ -20,7 +22,7 @@ public class RightBatDownAction extends UserAction {
 
     @Override
     protected void onActionBegin() {
-        if (!HockeyRunner.isStartReadyStatus() && !HockeyRunner.isRestartReadyStatus() &&
+        if (!HockeyRunner.isStartReadyStatus() && !isRestartReadyStatus() &&
                 !PauseAction.isPausePerformed())
             bat.setLinearVelocity(0, DOWN_VELOCITY);
     }

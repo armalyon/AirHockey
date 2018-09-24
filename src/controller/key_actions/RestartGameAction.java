@@ -3,6 +3,8 @@ package controller.key_actions;
 import com.almasb.fxgl.event.UserAction;
 import javafx.beans.property.IntegerProperty;
 
+import static controller.game_cases.RestartFunctions.isRestartReadyStatus;
+import static controller.game_cases.RestartFunctions.setRestartReadyStatus;
 import static hockey.HockeyRunner.*;
 
 ;
