@@ -3,6 +3,7 @@ package controller.game_cases;
 import com.almasb.fxgl.GameWorld;
 import javafx.beans.property.IntegerProperty;
 import javafx.scene.text.Text;
+import model.components.Ballinitializer;
 import utils.Assets;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import controller.key_actions.RestartGameAction;
@@ -19,7 +20,7 @@ public class RestartFunctions {
     public static void restartBall( GameWorld gameWorld, Assets assets) {
         if (RestartGameAction.getBallRestart()) {
             RestartGameAction.setBallRestart(false);
-            PhysicsEntity ball  = getBallinitializer().getBall(assets);
+            PhysicsEntity ball  = Ballinitializer.getBall(assets);
             setBall(ball);
             gameWorld.addEntity(ball);
         }
@@ -38,7 +39,7 @@ public class RestartFunctions {
     public static void setGameEnd() {
         IntegerProperty score1 = getScore1();
         IntegerProperty score2 = getScore2();
-        if (score1.get() == FINAL_SCORE || getScore2().get() == FINAL_SCORE) {
+        if (score1.get() == FINAL_SCORE || score2.get() == FINAL_SCORE) {
             restartReadyStatus = true;
             PhysicsEntity ball = getBall();
             ball.setPosition(200, -200);

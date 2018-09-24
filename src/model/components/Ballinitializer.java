@@ -23,7 +23,7 @@ public class Ballinitializer {
 
 
 
-    public PhysicsEntity getBall(Assets assets) {
+    public static PhysicsEntity getBall(Assets assets) {
         PhysicsEntity ball = new PhysicsEntity(Type.BALL);
         ball.setBodyType(BodyType.DYNAMIC);
         ball.setSceneView(assets.getAssets().loadTexture(BALL_FILE));

@@ -2,12 +2,13 @@ package hockey;
 
 
 import com.almasb.fxgl.GameApplication;
+
 import com.almasb.fxgl.event.InputManager;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
 import controller.corrections.BallSpeedCorrection;
 import controller.game_cases.PauseFunction;
-import controller.game_cases.RestartFunctions;
+
 import model.components.BackgroundInitializator;
 import model.components.Ballinitializer;
 import model.components.BatInitializer;
@@ -21,7 +22,9 @@ import utils.Assets;
 import static controller.collisions.BatBoundsCollision.getLeftBatCollision;
 import static controller.collisions.BatBoundsCollision.getRightBatCollision;
 import static controller.game_cases.RestartFunctions.*;
-import static model.components.Ballinitializer.*;
+import static controller.game_cases.ScoreCounter.countScore1;
+import static controller.game_cases.ScoreCounter.countScore2;
+
 import static model.components.TextFields.*;
 import static controller.key_actions.LeftBatDownAction.getLeftBatDownAction;
 import static controller.key_actions.LeftBatUpAction.getLeftBatUpAction;
@@ -33,7 +36,7 @@ import static controller.key_actions.RightBatUpAction.getRightBatUpAction;
 
 public class HockeyRunner extends GameApplication {
     private static BatInitializer batInitializer = new BatInitializer();
-    private static Ballinitializer ballinitializer = new Ballinitializer();
+
     public static final int SCREEN_WIDTH = 1200;
     public static final int SCREEN_HEIGHT = 675;
     private static final String TITLE = "Hockey";
@@ -46,9 +49,8 @@ public class HockeyRunner extends GameApplication {
     private static PhysicsEntity ball;
     private static IntegerProperty score1 = new SimpleIntegerProperty(0);
     private static IntegerProperty score2 = new SimpleIntegerProperty(0);
-    public static final int FINAL_SCORE = 1;
+    public static final int FINAL_SCORE = 2;
     private static boolean startReadyStatus = true;
-
     private static Text player1controls;
     private static Text player2controls;
     private static Text startText;
@@ -84,7 +86,7 @@ public class HockeyRunner extends GameApplication {
         new BoundsInitialization(assets, this);
         leftBat = batInitializer.getLeftBat(assets);
         rightBat = batInitializer.getRightBat(assets);
-        ball = ballinitializer.getBall(assets);
+        ball = Ballinitializer.getBall(assets);
         getGameWorld().addEntities(leftBat, rightBat, ball);
         initKeyInput();
         initCollisions();
@@ -133,8 +135,8 @@ public class HockeyRunner extends GameApplication {
     protected void onUpdate() {
         startNewGame(startReadyStatus, player1controls, player2controls, startText, pauseControlText);
         ballSpeedCorrection.ballSpeedCorrection(ball);
-        countScore1();
-        countScore2();
+        countScore1(getGameWorld(), assets);
+        countScore2(getGameWorld(), assets);
         setGameEnd();
         restartBall(getGameWorld(), assets);
         pauseFunction.pauseGame();
@@ -159,35 +161,6 @@ public class HockeyRunner extends GameApplication {
 
     }
 
-
-    private void countScore1() {
-        if (!isRestartReadyStatus() && ball.getX() > SCREEN_WIDTH + 50) {
-            ball = ballinitializer.getBall(assets);
-            if (rightBat.getY() < SCREEN_HEIGHT / 2) {
-                ball.setPosition(BALL_RIGHT_ALT_POSITION);
-            } else {
-                ball.setPosition(BALL_RIGHT_POSITION);
-            }
-            getGameWorld().addEntity(ball);
-            score1.setValue(score1.get() + 1);
-
-        }
-
-    }
-
-
-    private void countScore2() {
-        if (!isStartReadyStatus() && ball.getX() < -50) {
-            ball = ballinitializer.getBall(assets);
-            if (leftBat.getY() < SCREEN_HEIGHT / 2) {
-                ball.setPosition(BALL_LEFT_ALT_POSITION);
-            } else {
-                ball.setPosition(BALL_LEFT_POSITION);
-            }
-            getGameWorld().addEntity(ball);
-            score2.setValue(score2.get() + 1);
-        }
-    }
 
 
 
@@ -231,9 +204,6 @@ public class HockeyRunner extends GameApplication {
         HockeyRunner.ball = ball;
     }
 
-    public static Ballinitializer getBallinitializer() {
-        return ballinitializer;
-    }
 
     public static Text getPlayer1controls() {
         return player1controls;

@@ -34,9 +34,11 @@
       <change afterPath="$PROJECT_DIR$/src/assets/ui/fonts/Halogen Gas Lights.otf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/assets/ui/icons/Thumbs.db" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/assets/ui/icons/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/utils/Assets.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/system/Readme.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/system/fxgl.bundle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hockey/HockeyRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hockey/HockeyRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hockey/.idea/artifacts/main_jar.xml" beforeDir="false" />
@@ -547,7 +549,7 @@
           <entry key="class" value="12" />
           <entry key="gitignore" value="2" />
           <entry key="iml" value="1" />
-          <entry key="java" value="82" />
+          <entry key="java" value="86" />
           <entry key="log" value="3" />
           <entry key="properties" value="1" />
           <entry key="txt" value="2" />
@@ -558,7 +560,7 @@
         <counts>
           <entry key="CLASS" value="12" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="82" />
+          <entry key="JAVA" value="86" />
           <entry key="Log" value="2" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Properties" value="1" />
@@ -569,13 +571,13 @@
         <counts>
           <entry key="dummy" value="18" />
           <entry key="gitignore" value="30" />
-          <entry key="java" value="3332" />
+          <entry key="java" value="3528" />
           <entry key="log" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3332" />
+          <entry key="JAVA" value="3528" />
           <entry key="Log" value="2" />
           <entry key="PLAIN_TEXT" value="49" />
         </counts>
@@ -589,11 +591,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hockey/HockeyRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+            <state relative-caret-position="278">
+              <caret line="138" column="42" selection-start-line="138" selection-start-column="42" selection-end-line="138" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4035#4036#0" expanded="true" />
@@ -621,15 +623,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+            <state>
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1095#1096#0" expanded="true" />
-                <element signature="e#1136#1137#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -664,8 +664,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/utils/Assets.java" />
-        <option value="$PROJECT_DIR$/src/components/Bat.java" />
         <option value="$PROJECT_DIR$/src/components/BackgroundInitializator.java" />
         <option value="$PROJECT_DIR$/src/actions/LeftBatUp.java" />
         <option value="$PROJECT_DIR$/src/abstraction/Game.java" />
@@ -713,8 +711,10 @@
         <option value="$PROJECT_DIR$/src/controller/key_actions/RightBatUpAction.java" />
         <option value="$PROJECT_DIR$/src/controller/key_actions/RestartGameAction.java" />
         <option value="$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java" />
-        <option value="$PROJECT_DIR$/src/hockey/HockeyRunner.java" />
         <option value="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" />
+        <option value="$PROJECT_DIR$/src/model/components/Ballinitializer.java" />
+        <option value="$PROJECT_DIR$/src/hockey/HockeyRunner.java" />
+        <option value="$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java" />
       </list>
     </option>
   </component>
@@ -772,21 +772,26 @@
               <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="corrections" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="game_cases" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
               <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="key_actions" type="462c0819:PsiDirectoryNode" />
+              <item name="hockey" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -803,7 +808,7 @@
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="hockey" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537819856414" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537825795618" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -904,7 +909,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48635000" />
+    <option name="totallyTimeSpent" value="51512000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -919,7 +924,7 @@
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26941746" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26941746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -929,7 +934,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290993" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3290993" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3290993" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39838338" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -937,7 +942,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3290993" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3290993" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3290993" />
+      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.3290993" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -997,7 +1002,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/correction/BallSpeedCorrection.java" />
     <entry file="file://$PROJECT_DIR$/src/collisions/BallHorizontalBoundsCollision.java" />
     <entry file="jar://$PROJECT_DIR$/libs/FXGL-0.1.8.jar!/org/jbox2d/dynamics/BodyDef.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1204,13 +1208,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/components/Ballinitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hockey.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="499">
@@ -1278,8 +1275,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        <state relative-caret-position="170">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/components/Ballinitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1288,8 +1315,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hockey/HockeyRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+        <state relative-caret-position="278">
+          <caret line="138" column="42" selection-start-line="138" selection-start-column="42" selection-end-line="138" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4035#4036#0" expanded="true" />
@@ -1312,18 +1339,6 @@
             <element signature="e#7940#7941#0" expanded="true" />
             <element signature="e#7994#7995#0" expanded="true" />
             <element signature="e#8034#8035#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-            <element signature="e#1136#1137#0" expanded="true" />
           </folding>
         </state>
       </provider>
