@@ -6,19 +6,17 @@ import com.almasb.fxgl.event.InputManager;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
 import controller.corrections.BallSpeedCorrection;
-import controller.game_cases.RestartFunctions;
+import controller.game_cases.PauseFunction;
 import model.components.BackgroundInitializator;
 import model.components.Ballinitializer;
 import model.components.BatInitializer;
 import model.components.BoundsInitialization;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import controller.key_actions.StartGameAction;
 import utils.Assets;
-
 import static controller.collisions.BatBoundsCollision.getLeftBatCollision;
 import static controller.collisions.BatBoundsCollision.getRightBatCollision;
 import static controller.game_cases.RestartFunctions.*;
@@ -42,10 +40,9 @@ public class HockeyRunner extends GameApplication {
     private static final String FONT_FILE_NAME = "Halogen Gas Lights.otf";
     private Assets assets;
     private InputManager input;
-    private PhysicsEntity leftBat;
-    private PhysicsEntity rightBat;
-    private PhysicsEntity ball;
-    private static Point2D ballSpeedBeforePause;
+    private static PhysicsEntity leftBat;
+    private static PhysicsEntity rightBat;
+    private static PhysicsEntity ball;
     private static IntegerProperty score1 = new SimpleIntegerProperty(0);
     private static IntegerProperty score2 = new SimpleIntegerProperty(0);
     private static final int FINAL_SCORE = 3;
@@ -59,8 +56,9 @@ public class HockeyRunner extends GameApplication {
     private static Text pausetext;
     private static Text pauseControlText;
     private BallSpeedCorrection ballSpeedCorrection;
+    private PauseFunction pauseFunction;
 
-    private static boolean pauseFlag = false;
+
 
 
     @Override
@@ -90,6 +88,7 @@ public class HockeyRunner extends GameApplication {
         initKeyInput();
         initCollisions();
         ballSpeedCorrection = new BallSpeedCorrection();
+        pauseFunction = new PauseFunction();
 
     }
 
@@ -108,9 +107,7 @@ public class HockeyRunner extends GameApplication {
 
 
     @Override
-    protected void initPhysics() {
-
-    }
+    protected void initPhysics() {}
 
 
     @Override
@@ -139,7 +136,7 @@ public class HockeyRunner extends GameApplication {
         countScore2();
         setGameEnd();
         restartBall(ball, getGameWorld(), assets);
-        pauseGame();
+        pauseFunction.pauseGame();
 
     }
 
@@ -207,23 +204,6 @@ public class HockeyRunner extends GameApplication {
 
     }
 
-    private void pauseGame() {
-        if (isPausePerformed() && !pauseFlag) {
-            ballSpeedBeforePause = ball.getLinearVelocity();
-            pauseFlag = true;
-            if (pauseFlag){
-                ball.setLinearVelocity(0, 0);
-                leftBat.setLinearVelocity(0, 0);
-                rightBat.setLinearVelocity(0, 0);}
-            pausetext.setText(PAUSED_TEXT);
-        }
-        if (!isPausePerformed() && pauseFlag) {
-            ball.setLinearVelocity(ballSpeedBeforePause);
-            pauseFlag = false;
-            pausetext.setText("");
-        }
-
-    }
 
     public static IntegerProperty getScore1() {
         return score1;
@@ -257,6 +237,17 @@ public class HockeyRunner extends GameApplication {
         HockeyRunner.restartReadyStatus = restartReadyStatus;
     }
 
+    public static PhysicsEntity getLeftBat() {
+        return leftBat;
+    }
+
+    public static PhysicsEntity getRightBat() {
+        return rightBat;
+    }
+
+    public static PhysicsEntity getBall() {
+        return ball;
+    }
 
     public static Ballinitializer getBallinitializer() {
         return ballinitializer;
