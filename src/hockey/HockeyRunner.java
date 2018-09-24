@@ -6,7 +6,7 @@ import com.almasb.fxgl.event.InputManager;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
 import controller.corrections.BallSpeedCorrection;
-import controller.game_cases.ReststartBall;
+import controller.game_cases.RestartFunctions;
 import model.components.BackgroundInitializator;
 import model.components.Ballinitializer;
 import model.components.BatInitializer;
@@ -16,12 +16,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
-import controller.key_actions.RestartGameAction;
 import controller.key_actions.StartGameAction;
 import utils.Assets;
 
 import static controller.collisions.BatBoundsCollision.getLeftBatCollision;
 import static controller.collisions.BatBoundsCollision.getRightBatCollision;
+import static controller.game_cases.RestartFunctions.*;
 import static model.components.Ballinitializer.*;
 import static model.components.TextFields.*;
 import static controller.key_actions.LeftBatDownAction.getLeftBatDownAction;
@@ -45,7 +45,7 @@ public class HockeyRunner extends GameApplication {
     private PhysicsEntity leftBat;
     private PhysicsEntity rightBat;
     private PhysicsEntity ball;
-    private Point2D ballSpeedBeforePause;
+    private static Point2D ballSpeedBeforePause;
     private static IntegerProperty score1 = new SimpleIntegerProperty(0);
     private static IntegerProperty score2 = new SimpleIntegerProperty(0);
     private static final int FINAL_SCORE = 3;
@@ -133,12 +133,12 @@ public class HockeyRunner extends GameApplication {
 
     @Override
     protected void onUpdate() {
-        startNewGame();
+        startNewGame(startReadyStatus, player1controls, player2controls, startText, pauseControlText);
         ballSpeedCorrection.ballSpeedCorrection(ball);
         countScore1();
         countScore2();
         setGameEnd();
-        ReststartBall.restartBall(ball, getGameWorld(), assets);
+        restartBall(ball, getGameWorld(), assets);
         pauseGame();
 
     }
@@ -207,16 +207,6 @@ public class HockeyRunner extends GameApplication {
 
     }
 
-    private void startNewGame() {
-        if (!startReadyStatus) {
-            player1controls.setText("");
-            player2controls.setText("");
-            startText.setText("");
-            pauseControlText.setText("");
-        }
-    }
-
-
     private void pauseGame() {
         if (isPausePerformed() && !pauseFlag) {
             ballSpeedBeforePause = ball.getLinearVelocity();
@@ -267,14 +257,26 @@ public class HockeyRunner extends GameApplication {
         HockeyRunner.restartReadyStatus = restartReadyStatus;
     }
 
-    public PhysicsEntity getBall() {
-        return ball;
-    }
 
     public static Ballinitializer getBallinitializer() {
         return ballinitializer;
     }
 
+    public static Text getPlayer1controls() {
+        return player1controls;
+    }
+
+    public static Text getPlayer2controls() {
+        return player2controls;
+    }
+
+    public static Text getStartText() {
+        return startText;
+    }
+
+    public static Text getPausetext() {
+        return pausetext;
+    }
 
     public static void main(String[] args) {
         launch(args);
