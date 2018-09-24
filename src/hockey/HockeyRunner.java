@@ -46,7 +46,7 @@ public class HockeyRunner extends GameApplication {
     private static PhysicsEntity ball;
     private static IntegerProperty score1 = new SimpleIntegerProperty(0);
     private static IntegerProperty score2 = new SimpleIntegerProperty(0);
-    private static final int FINAL_SCORE = 1;
+    public static final int FINAL_SCORE = 1;
     private static boolean startReadyStatus = true;
 
     private static Text player1controls;
@@ -189,18 +189,6 @@ public class HockeyRunner extends GameApplication {
         }
     }
 
-
-
-    private void setGameEnd() {
-        if (score1.get() == FINAL_SCORE || score2.get() == FINAL_SCORE) {
-            setRestartReadyStatus(true);
-            ball.setPosition(200, -200);
-            restartText.setText(PRESS_SPACE_TO_RESTART);
-            if (score1.get()==FINAL_SCORE){
-                winText.setText(PLAYER1_WINS_TEXT);
-            } else   winText.setText(PLAYER2_WINS_TEXT);
-        }
-    }
 
 
     public static IntegerProperty getScore1() {

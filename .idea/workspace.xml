@@ -37,15 +37,7 @@
       <change afterPath="$PROJECT_DIR$/src/utils/Assets.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/system/Readme.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/system/fxgl.bundle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/key_actions/LeftBatDownAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/key_actions/LeftBatDownAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/key_actions/LeftBatUpAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/key_actions/LeftBatUpAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/key_actions/PauseAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/key_actions/PauseAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/key_actions/RestartGameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/key_actions/RestartGameAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/key_actions/RightBatDownAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/key_actions/RightBatDownAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/key_actions/RightBatUpAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/key_actions/RightBatUpAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hockey/HockeyRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hockey/HockeyRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hockey/.idea/artifacts/main_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hockey/.idea/compiler.xml" beforeDir="false" />
@@ -577,13 +569,13 @@
         <counts>
           <entry key="dummy" value="18" />
           <entry key="gitignore" value="30" />
-          <entry key="java" value="3221" />
+          <entry key="java" value="3332" />
           <entry key="log" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3221" />
+          <entry key="JAVA" value="3332" />
           <entry key="Log" value="2" />
           <entry key="PLAIN_TEXT" value="49" />
         </counts>
@@ -597,25 +589,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hockey/HockeyRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="191" column="4" selection-start-line="191" selection-start-column="4" selection-end-line="191" selection-end-column="4" />
+            <state relative-caret-position="255">
+              <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8003#8004#0" expanded="true" />
-                <element signature="e#8043#8044#0" expanded="true" />
+                <element signature="e#4035#4036#0" expanded="true" />
+                <element signature="e#4076#4077#0" expanded="true" />
+                <element signature="e#7232#7233#0" expanded="true" />
+                <element signature="e#7261#7262#0" expanded="true" />
+                <element signature="e#7310#7311#0" expanded="true" />
+                <element signature="e#7339#7340#0" expanded="true" />
+                <element signature="e#7389#7390#0" expanded="true" />
+                <element signature="e#7428#7429#0" expanded="true" />
+                <element signature="e#7603#7604#0" expanded="true" />
+                <element signature="e#7633#7634#0" expanded="true" />
+                <element signature="e#7676#7677#0" expanded="true" />
+                <element signature="e#7710#7711#0" expanded="true" />
+                <element signature="e#7758#7759#0" expanded="true" />
+                <element signature="e#7788#7789#0" expanded="true" />
+                <element signature="e#7837#7838#0" expanded="true" />
+                <element signature="e#7868#7869#0" expanded="true" />
+                <element signature="e#7913#7914#0" expanded="true" />
+                <element signature="e#7940#7941#0" expanded="true" />
+                <element signature="e#7994#7995#0" expanded="true" />
+                <element signature="e#8034#8035#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="448">
+              <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1095#1096#0" expanded="true" />
@@ -703,8 +713,8 @@
         <option value="$PROJECT_DIR$/src/controller/key_actions/RightBatUpAction.java" />
         <option value="$PROJECT_DIR$/src/controller/key_actions/RestartGameAction.java" />
         <option value="$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java" />
-        <option value="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" />
         <option value="$PROJECT_DIR$/src/hockey/HockeyRunner.java" />
+        <option value="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" />
       </list>
     </option>
   </component>
@@ -894,7 +904,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47974000" />
+    <option name="totallyTimeSpent" value="48635000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1276,26 +1286,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java">
+    <entry file="file://$PROJECT_DIR$/src/hockey/HockeyRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="255">
+          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#4035#4036#0" expanded="true" />
+            <element signature="e#4076#4077#0" expanded="true" />
+            <element signature="e#7232#7233#0" expanded="true" />
+            <element signature="e#7261#7262#0" expanded="true" />
+            <element signature="e#7310#7311#0" expanded="true" />
+            <element signature="e#7339#7340#0" expanded="true" />
+            <element signature="e#7389#7390#0" expanded="true" />
+            <element signature="e#7428#7429#0" expanded="true" />
+            <element signature="e#7603#7604#0" expanded="true" />
+            <element signature="e#7633#7634#0" expanded="true" />
+            <element signature="e#7676#7677#0" expanded="true" />
+            <element signature="e#7710#7711#0" expanded="true" />
+            <element signature="e#7758#7759#0" expanded="true" />
+            <element signature="e#7788#7789#0" expanded="true" />
+            <element signature="e#7837#7838#0" expanded="true" />
+            <element signature="e#7868#7869#0" expanded="true" />
+            <element signature="e#7913#7914#0" expanded="true" />
+            <element signature="e#7940#7941#0" expanded="true" />
+            <element signature="e#7994#7995#0" expanded="true" />
+            <element signature="e#8034#8035#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hockey/HockeyRunner.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="191" column="4" selection-start-line="191" selection-start-column="4" selection-end-line="191" selection-end-column="4" />
+        <state relative-caret-position="448">
+          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8003#8004#0" expanded="true" />
-            <element signature="e#8043#8044#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+            <element signature="e#1136#1137#0" expanded="true" />
           </folding>
         </state>
       </provider>
