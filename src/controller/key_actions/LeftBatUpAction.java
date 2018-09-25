@@ -5,13 +5,14 @@ import com.almasb.fxgl.physics.PhysicsEntity;
 import hockey.HockeyRunner;
 
 import static controller.game_cases.RestartFunctions.isRestartReadyStatus;
+import static hockey.HockeyRunner.BAT_SPEED;
 
 public class LeftBatUpAction extends UserAction {
 
     private PhysicsEntity bat;
     private static LeftBatUpAction instance;
     private final static String name = "Left bat up";
-    private final static int UP_VELOCITY = -12;
+
 
 
     private LeftBatUpAction(String name, PhysicsEntity bat) {
@@ -24,7 +25,7 @@ public class LeftBatUpAction extends UserAction {
     protected void onActionBegin() {
         if (!HockeyRunner.isStartReadyStatus() && !isRestartReadyStatus() &&
                 !PauseAction.isPausePerformed())
-            bat.setLinearVelocity(0, UP_VELOCITY);
+            bat.setLinearVelocity(0, -1*BAT_SPEED);
 
     }
 

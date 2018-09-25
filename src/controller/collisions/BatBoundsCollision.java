@@ -11,7 +11,8 @@ import model.Type;
 
 public class BatBoundsCollision extends CollisionHandler {
 
-    private  PhysicsEntity bat;
+    private PhysicsEntity bat;
+
     private static BatBoundsCollision instanceLeft = new BatBoundsCollision(Type.LEFT_BAT,
             Type.HORIZONTAL_BOUNDS, HockeyRunner.getLeftBat());
 

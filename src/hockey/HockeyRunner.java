@@ -5,6 +5,7 @@ import com.almasb.fxgl.GameApplication;
 import com.almasb.fxgl.event.InputManager;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
+import controller.collisions.BallBatCollision;
 import controller.corrections.BallSpeedCorrection;
 import controller.game_cases.PauseFunction;
 import controller.key_actions.StartGameAction;
@@ -33,9 +34,10 @@ import static model.components.TextFields.*;
 
 
 public class HockeyRunner extends GameApplication {
-    public static final int FINAL_SCORE = 3;
+    public static final int FINAL_SCORE = 5;
     public static final int SCREEN_WIDTH = 1200;
     public static final int SCREEN_HEIGHT = 675;
+    public  static final int BAT_SPEED = 15;
     private static final String TITLE = "Hockey";
     private static final String ICON_FILE = "icon.png";
     private static final String FONT_FILE_NAME = "Halogen Gas Lights.otf";
@@ -146,6 +148,8 @@ public class HockeyRunner extends GameApplication {
     public void initCollisions() {
         getPhysicsManager().addCollisionHandler(getLeftBatCollision());
         getPhysicsManager().addCollisionHandler(getRightBatCollision());
+        getPhysicsManager().addCollisionHandler(BallBatCollision.getLeftBatCollision());
+        getPhysicsManager().addCollisionHandler(BallBatCollision.getRightBatCollision());
 
     }
 

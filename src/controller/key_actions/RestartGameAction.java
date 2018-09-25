@@ -13,8 +13,6 @@ public class RestartGameAction extends UserAction {
     private static final String name = "restart";
     private static RestartGameAction ourInstance = new RestartGameAction();
     private static boolean ballRestart = false;
-    private static IntegerProperty score1 = getScore1();
-    private static IntegerProperty score2 = getScore2();
 
     private RestartGameAction() {
         super(name);
