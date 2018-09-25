@@ -6,6 +6,7 @@ import com.almasb.fxgl.event.InputManager;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
 import controller.collisions.BallBatCollision;
+import controller.collisions.BallHorizontalBoundsCollision;
 import controller.corrections.BallSpeedCorrection;
 import controller.game_cases.PauseFunction;
 import controller.key_actions.StartGameAction;
@@ -17,7 +18,7 @@ import model.components.BackgroundInitializator;
 import model.components.Ballinitializer;
 import model.components.BatInitializer;
 import model.components.BoundsInitialization;
-import utils.Assets;
+import model.Assets;
 
 import static controller.collisions.BatBoundsCollision.getLeftBatCollision;
 import static controller.collisions.BatBoundsCollision.getRightBatCollision;
@@ -150,6 +151,7 @@ public class HockeyRunner extends GameApplication {
         getPhysicsManager().addCollisionHandler(getRightBatCollision());
         getPhysicsManager().addCollisionHandler(BallBatCollision.getLeftBatCollision());
         getPhysicsManager().addCollisionHandler(BallBatCollision.getRightBatCollision());
+        getPhysicsManager().addCollisionHandler(BallHorizontalBoundsCollision.getBallHorizontalBoundsCollision());
 
     }
 

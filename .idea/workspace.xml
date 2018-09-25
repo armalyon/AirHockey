@@ -34,13 +34,21 @@
       <change afterPath="$PROJECT_DIR$/src/assets/ui/fonts/Halogen Gas Lights.otf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/assets/ui/icons/Thumbs.db" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/assets/ui/icons/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/collisions/BallBatCollision.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/Assets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/collisions/BallHorizontalBoundsCollision.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/system/Readme.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/system/fxgl.bundle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/collisions/BatBoundsCollision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/collisions/BatBoundsCollision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/collisions/BallBatCollision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/collisions/BallBatCollision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hockey/HockeyRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hockey/HockeyRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/components/BackgroundInitializator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/components/BackgroundInitializator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/components/Ballinitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/components/Ballinitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/components/BatInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/components/BatInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/components/BoundsInitialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/components/BoundsInitialization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Assets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hockey/.idea/artifacts/main_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hockey/.idea/compiler.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hockey/.idea/encodings.xml" beforeDir="false" />
@@ -549,7 +557,7 @@
           <entry key="class" value="12" />
           <entry key="gitignore" value="2" />
           <entry key="iml" value="1" />
-          <entry key="java" value="105" />
+          <entry key="java" value="120" />
           <entry key="log" value="3" />
           <entry key="properties" value="1" />
           <entry key="txt" value="2" />
@@ -560,7 +568,7 @@
         <counts>
           <entry key="CLASS" value="12" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="105" />
+          <entry key="JAVA" value="120" />
           <entry key="Log" value="2" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Properties" value="1" />
@@ -571,13 +579,13 @@
         <counts>
           <entry key="dummy" value="18" />
           <entry key="gitignore" value="30" />
-          <entry key="java" value="4352" />
+          <entry key="java" value="4908" />
           <entry key="log" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4352" />
+          <entry key="JAVA" value="4908" />
           <entry key="Log" value="2" />
           <entry key="PLAIN_TEXT" value="49" />
         </counts>
@@ -590,7 +598,20 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -619,10 +640,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/actions/RightBatDownAction.java" />
-        <option value="$PROJECT_DIR$/src/actions/RightBatUpAction.java" />
-        <option value="$PROJECT_DIR$/src/colisions/BatBoundsColision.java" />
-        <option value="$PROJECT_DIR$/src/colisions/LeftBatBoundsCollision.java" />
         <option value="$PROJECT_DIR$/src/collisions/RightBatBoundsCollision.java" />
         <option value="$PROJECT_DIR$/src/collisions/LeftBatBoundsCollision.java" />
         <option value="$PROJECT_DIR$/src/collisions/BallBoundsCollision.java" />
@@ -657,19 +674,23 @@
         <option value="$PROJECT_DIR$/src/controller/game_cases/ReststartBall.java" />
         <option value="$PROJECT_DIR$/src/controller/game_cases/ReststartFunctions.java" />
         <option value="$PROJECT_DIR$/src/controller/key_actions/PauseAction.java" />
-        <option value="$PROJECT_DIR$/src/model/components/Ballinitializer.java" />
-        <option value="$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java" />
-        <option value="$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java" />
         <option value="$PROJECT_DIR$/src/controller/game_cases/RestartFunctions.java" />
         <option value="$PROJECT_DIR$/src/model/components/BatInitializer.java" />
         <option value="$PROJECT_DIR$/src/controller/collisions/BatBoundsCollision.java" />
-        <option value="$PROJECT_DIR$/src/controller/collisions/BallBatCollision.java" />
         <option value="$PROJECT_DIR$/src/controller/key_actions/RestartGameAction.java" />
-        <option value="$PROJECT_DIR$/src/hockey/HockeyRunner.java" />
         <option value="$PROJECT_DIR$/src/controller/key_actions/LeftBatDownAction.java" />
         <option value="$PROJECT_DIR$/src/controller/key_actions/LeftBatUpAction.java" />
         <option value="$PROJECT_DIR$/src/controller/key_actions/RightBatDownAction.java" />
         <option value="$PROJECT_DIR$/src/controller/key_actions/RightBatUpAction.java" />
+        <option value="$PROJECT_DIR$/src/model/components/Ballinitializer.java" />
+        <option value="$PROJECT_DIR$/src/utils/Assets.java" />
+        <option value="$PROJECT_DIR$/src/model/Assets.java" />
+        <option value="$PROJECT_DIR$/src/hockey/HockeyRunner.java" />
+        <option value="$PROJECT_DIR$/src/utils/Utils.java" />
+        <option value="$PROJECT_DIR$/src/controller/collisions/BallBatCollision.java" />
+        <option value="$PROJECT_DIR$/src/controller/collisions/BallHorizontalBoundsCollision.java" />
+        <option value="$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java" />
+        <option value="$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java" />
       </list>
     </option>
   </component>
@@ -692,19 +713,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Hockey" type="58d84e3e:PackageViewProjectNode" />
-              <item name="main" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -715,24 +724,6 @@
             <path>
               <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
               <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="main_jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -740,13 +731,6 @@
               <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="collisions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
@@ -759,27 +743,25 @@
               <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
               <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="key_actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="hockey" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
               <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
             <path>
-              <item name="AirHockey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirHockey" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Hockey" type="58d84e3e:PackageViewProjectNode" />
+              <item name="main" type="616d4139:PackageViewModuleNode" />
             </path>
           </expand>
           <select />
@@ -795,7 +777,7 @@
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="hockey" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537871464954" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537888890872" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -896,7 +878,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57067000" />
+    <option name="totallyTimeSpent" value="61919000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -909,8 +891,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27831715" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2880259" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -988,14 +971,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/libs/FXGL-0.1.8.jar!/org/jbox2d/dynamics/BodyDef.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/collisions/BallLefBatCollision.java" />
     <entry file="jar://$PROJECT_DIR$/libs/FXGL-0.1.8.jar!/com/almasb/fxgl/entity/Entity.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -1022,13 +997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-12">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/components/BoundsInitialization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1158,13 +1126,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/score/ScoreCounter.java" />
-    <entry file="file://$PROJECT_DIR$/src/utils/Assets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hockey.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="499">
@@ -1172,51 +1133,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/components/Ballinitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/components/BatInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Type.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="72" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/collisions/BatBoundsCollision.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#631#632#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#827#828#0" expanded="true" />
-            <element signature="e#870#871#0" expanded="true" />
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1176#1177#0" expanded="true" />
-            <element signature="e#1270#1271#0" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1264,42 +1184,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hockey/HockeyRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/collisions/BallBatCollision.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#1292#1293#0" expanded="true" />
-            <element signature="e#1327#1328#0" expanded="true" />
-            <element signature="e#1388#1389#0" expanded="true" />
-            <element signature="e#1424#1425#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/key_actions/LeftBatDownAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1328,6 +1212,99 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/components/BoundsInitialization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/components/BatInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Assets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/components/Ballinitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/collisions/BatBoundsCollision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/collisions/BallHorizontalBoundsCollision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1097#1098#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/collisions/BallBatCollision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/corrections/BallSpeedCorrection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hockey/HockeyRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="153" column="112" selection-start-line="153" selection-start-column="112" selection-end-line="153" selection-end-column="112" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/game_cases/ScoreCounter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

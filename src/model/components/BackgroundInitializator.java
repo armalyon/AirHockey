@@ -4,7 +4,7 @@ import com.almasb.fxgl.effect.ParticleEntity;
 import com.almasb.fxgl.entity.Entity;
 import hockey.HockeyRunner;
 import model.Type;
-import utils.Assets;
+import model.Assets;
 
 
 public class BackgroundInitializator {

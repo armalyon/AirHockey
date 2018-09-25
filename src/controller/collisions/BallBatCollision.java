@@ -3,15 +3,14 @@ package controller.collisions;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityType;
 import com.almasb.fxgl.physics.CollisionHandler;
-import com.almasb.fxgl.physics.PhysicsEntity;
-import hockey.HockeyRunner;
+import controller.corrections.BallSpeedCorrection;
 import model.Type;
+import utils.Utils;
 
-import java.util.Date;
+import static hockey.HockeyRunner.getBall;
 
 public class BallBatCollision extends CollisionHandler {
 
-    private PhysicsEntity ball;
 
     private static BallBatCollision instanceLeft = new BallBatCollision(Type.LEFT_BAT,
             Type.BALL);
@@ -22,18 +21,19 @@ public class BallBatCollision extends CollisionHandler {
 
     private BallBatCollision(EntityType a, EntityType b) {
         super(a, b);
-          }
+    }
 
 
     @Override
     protected void onCollisionEnd(Entity a, Entity b) {
-        PhysicsEntity ball = HockeyRunner.getBall();
-               timer(15);
-        double ballXSpeed = ball.getLinearVelocity().getX();
-        double ballYSpeed = ball.getLinearVelocity().getY();
-        if (ballXSpeed > -12 && ballXSpeed < 0) ball.setLinearVelocity(-12, ballYSpeed);
-        if (ballXSpeed < 12 && ballXSpeed > 0) ball.setLinearVelocity(12, ballYSpeed);
-               }
+        Utils.timer(15);
+        double ballXSpeed = getBall().getLinearVelocity().getX();
+        double ballYSpeed = getBall().getLinearVelocity().getY();
+        if (ballXSpeed > -12 && ballXSpeed < 0) getBall().setLinearVelocity(-12, ballYSpeed);
+        if (ballXSpeed < 12 && ballXSpeed > 0) getBall().setLinearVelocity(12, ballYSpeed);
+        BallSpeedCorrection.fixBallOutBug();
+
+    }
 
     public static BallBatCollision getLeftBatCollision() {
         return instanceLeft;
@@ -41,14 +41,6 @@ public class BallBatCollision extends CollisionHandler {
 
     public static BallBatCollision getRightBatCollision() {
         return instanceRight;
-    }
-
-    private void timer(int time){
-        int t1 = (int) new Date().getTime();
-        int t2 = t1;
-        while (t2-t1<time){
-            t2 = (int) new Date().getTime();
-        }
     }
 
 

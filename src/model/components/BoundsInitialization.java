@@ -5,7 +5,7 @@ import com.almasb.fxgl.physics.PhysicsEntity;
 import hockey.HockeyRunner;
 import model.Type;
 import org.jbox2d.dynamics.BodyType;
-import utils.Assets;
+import model.Assets;
 
 
 public class BoundsInitialization {

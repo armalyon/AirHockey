@@ -1,4 +1,4 @@
-package utils;
+package model;
 
 
 
@@ -10,8 +10,6 @@ public class Assets {
 
 
     private AssetManager assets;
-
-
 
     public Assets(HockeyRunner hockey)  {
         assets = hockey.getAssetManager();

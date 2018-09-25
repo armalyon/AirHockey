@@ -1,11 +1,10 @@
 package controller.game_cases;
 
 import com.almasb.fxgl.GameWorld;
-import hockey.HockeyRunner;
 import javafx.beans.property.IntegerProperty;
 import javafx.scene.text.Text;
 import model.components.Ballinitializer;
-import utils.Assets;
+import model.Assets;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import controller.key_actions.RestartGameAction;
 

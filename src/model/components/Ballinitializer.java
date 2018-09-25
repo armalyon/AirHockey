@@ -8,12 +8,12 @@ import javafx.geometry.Point2D;
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
-import utils.Assets;
+import model.Assets;
 
 public class Ballinitializer {
 
     private static final String BALL_FILE = "ball.png";
-    private final static int BALL_RADIUS = 14;
+    public final static int BALL_RADIUS = 14;
     public final static Point2D BALL_RIGHT_POSITION = new Point2D(HockeyRunner.SCREEN_WIDTH - 67 - BALL_RADIUS, 220);
     public final static Point2D BALL_LEFT_POSITION = new Point2D(49, 220);
 
