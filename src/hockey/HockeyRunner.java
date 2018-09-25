@@ -144,8 +144,8 @@ public class HockeyRunner extends GameApplication {
     }
 
     public void initCollisions() {
-        getPhysicsManager().addCollisionHandler(getLeftBatCollision(leftBat));
-        getPhysicsManager().addCollisionHandler(getRightBatCollision(rightBat));
+        getPhysicsManager().addCollisionHandler(getLeftBatCollision());
+        getPhysicsManager().addCollisionHandler(getRightBatCollision());
 
     }
 

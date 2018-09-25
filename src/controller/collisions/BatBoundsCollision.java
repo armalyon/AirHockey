@@ -5,14 +5,18 @@ import com.almasb.fxgl.entity.EntityType;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import hockey.HockeyRunner;
-import model.Type;
 import javafx.geometry.Point2D;
+import model.Type;
 
 
 public class BatBoundsCollision extends CollisionHandler {
 
-    private static BatBoundsCollision instance;
-    private PhysicsEntity bat;
+    private  PhysicsEntity bat;
+    private static BatBoundsCollision instanceLeft = new BatBoundsCollision(Type.LEFT_BAT,
+            Type.HORIZONTAL_BOUNDS, HockeyRunner.getLeftBat());
+
+    private static BatBoundsCollision instanceRight = new BatBoundsCollision(Type.RIGHT_BAT,
+            Type.HORIZONTAL_BOUNDS, HockeyRunner.getRightBat());
 
     private BatBoundsCollision(EntityType a, EntityType b, PhysicsEntity bat) {
         super(a, b);
@@ -36,14 +40,12 @@ public class BatBoundsCollision extends CollisionHandler {
         bat.setLinearVelocity(0, 0);
     }
 
-    public static BatBoundsCollision getLeftBatCollision(PhysicsEntity bat) {
-        instance = new BatBoundsCollision(Type.LEFT_BAT, Type.HORIZONTAL_BOUNDS, bat);
-        return instance;
+    public static BatBoundsCollision getLeftBatCollision() {
+        return instanceLeft;
     }
 
-    public static BatBoundsCollision getRightBatCollision(PhysicsEntity bat) {
-        instance = new BatBoundsCollision(Type.RIGHT_BAT, Type.HORIZONTAL_BOUNDS, bat);
-        return instance;
+    public static BatBoundsCollision getRightBatCollision() {
+        return instanceRight;
     }
 
     private void reboundBat() {
