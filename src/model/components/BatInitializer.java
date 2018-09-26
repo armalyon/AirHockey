@@ -9,7 +9,7 @@ import model.Assets;
 public class BatInitializer {
 
     private static final int BAT_HEIGHT = 84;
-    private static final int BAT_WIDTH = 29;
+    public static final int BAT_WIDTH = 29;
     private static final double LEFT_BAT_X = 26;
     private static final double RIGHT_BAT_X = HockeyRunner.SCREEN_WIDTH - 55;
     private final static String LEFT_BAT_FILE = "pinkbat.png";
