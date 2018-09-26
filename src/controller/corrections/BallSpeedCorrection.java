@@ -22,26 +22,29 @@ public class BallSpeedCorrection {
         if (Math.abs(xSpeed) <= 3 && ySpeed != 0) ball.setLinearVelocity(ballXDirection * 5, ySpeed);
     }
 
-    private static boolean isBallInOutZone1(double x) {
+    private static boolean isBallInCollisionZone1(double x) {
         return x >= VERTICAL_BOUND_WIDTH && x < VERTICAL_BOUND_WIDTH + BALL_RADIUS*2  + 15;
     }
 
-    private static boolean isBallInOutZone2(double x) {
+    private static boolean isBallInCollisionZone2(double x) {
         return x < SCREEN_WIDTH - VERTICAL_BOUND_WIDTH  &&
                 x >= SCREEN_WIDTH - VERTICAL_BOUND_WIDTH - BALL_RADIUS*2 - 15;
     }
 
+
+
+
     public static void fixBallOutBug(){
-        if (isBallInOutZone1(getBall().getX())) {
+        if (isBallInCollisionZone1(getBall().getX())) {
             double ballXSpeed = getBall().getLinearVelocity().getX();
             double ballYSpeed = getBall().getLinearVelocity().getY();
-            if (Math.abs(ballXSpeed) < 1) getBall().setLinearVelocity(8, ballYSpeed);
+            if (Math.abs(ballXSpeed) <= 1) getBall().setLinearVelocity(8, ballYSpeed);
 
         }
-        if (isBallInOutZone2(getBall().getX())) {
+        if (isBallInCollisionZone2(getBall().getX())) {
             double ballXSpeed = getBall().getLinearVelocity().getX();
             double ballYSpeed = getBall().getLinearVelocity().getY();
-            if (Math.abs(ballXSpeed) > -1) getBall().setLinearVelocity(-5, ballYSpeed);
+            if (Math.abs(ballXSpeed) >= -1) getBall().setLinearVelocity(-8, ballYSpeed);
             }
 
 
