@@ -134,6 +134,7 @@ public class HockeyRunner extends GameApplication {
         setGameEnd();
         restartBall(getGameWorld(), assets);
         pauseFunction.pauseGame();
+
     }
 
 

@@ -29,6 +29,7 @@ public class BoundsInitialization {
         PhysicsEntity lbBound;
         PhysicsEntity rtBound;
         PhysicsEntity rbBound;
+
         topBound = new PhysicsEntity(Type.HORIZONTAL_BOUNDS);
         topBound.setPosition(0, 0);
         topBound.setSceneView(assets.getAssets().loadTexture(TOP_BOUND_FILE));
