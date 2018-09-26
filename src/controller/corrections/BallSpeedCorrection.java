@@ -21,10 +21,10 @@ public class BallSpeedCorrection {
         if (xSpeed < 0) ballXDirection = -1;
         if (xSpeed > 0) ballXDirection = 1;
         if (Math.abs(xSpeed) <= 3 && ySpeed != 0) ball.setLinearVelocity(ballXDirection * 5, ySpeed);
-        if (isBallOutLeftUp(ball.getX(), ball.getY())) ball.setLinearVelocity(7, 7);
-        if (isBallOutLeftDown(ball.getX(), ball.getY())) ball.setLinearVelocity(7, -7);
-        if (isBallOutRightUp(ball.getX(), ball.getY())) ball.setLinearVelocity(-7, 7);
-        if (isBallOutRightDown(ball.getX(),ball.getY()))ball.setLinearVelocity(-7, -7);
+        if (isBallOutLeftUp(ball.getX(), ball.getY())) ball.setLinearVelocity(10, 10);
+        if (isBallOutLeftDown(ball.getX(), ball.getY())) ball.setLinearVelocity(10, -10);
+        if (isBallOutRightUp(ball.getX(), ball.getY())) ball.setLinearVelocity(-10, 10);
+        if (isBallOutRightDown(ball.getX(),ball.getY()))ball.setLinearVelocity(-10, -10);
 
     }
 
