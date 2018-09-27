@@ -31,7 +31,6 @@ public class BallBatCollision extends CollisionHandler {
         double ballYSpeed = getBall().getLinearVelocity().getY();
         if (ballXSpeed > -12 && ballXSpeed < 0) getBall().setLinearVelocity(-12, ballYSpeed);
         if (ballXSpeed < 12 && ballXSpeed > 0) getBall().setLinearVelocity(12, ballYSpeed);
-        BallSpeedCorrection.fixBallOutBug();
 
     }
 
