@@ -30,7 +30,6 @@ public class BallSpeedCorrection {
         if (isBallInRightUp(ballX, ballY)) ball.setLinearVelocity(-10,10);
         if (isBallOutRightDown(ballX,ballY))ball.setLinearVelocity(10,-10);
         if (isBallInRightDown(ballX,ballY))ball.setLinearVelocity(-10,-10);
-
     }
 
 
