@@ -2,9 +2,10 @@ package controller.key_actions;
 
 import com.almasb.fxgl.event.UserAction;
 import com.almasb.fxgl.physics.PhysicsEntity;
-import hockey.HockeyRunner;
+
 
 import static controller.game_cases.RestartFunctions.isRestartReadyStatus;
+import static controller.key_actions.Start1PlGameAction.*;
 import static hockey.HockeyRunner.*;
 
 public class LeftBatDownAction extends UserAction {
@@ -24,7 +25,7 @@ public class LeftBatDownAction extends UserAction {
     @Override
     protected void onActionBegin() {
             if (!isStartReadyStatus() && !isRestartReadyStatus()&&
-                    !PauseAction.isPausePerformed())
+                    !PauseAction.isPausePerformed()&&!isOnePlayerMode())
         bat.setLinearVelocity(0, BAT_SPEED);
             }
 

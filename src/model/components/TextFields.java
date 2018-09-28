@@ -14,7 +14,9 @@ public class TextFields {
     private static final String FONT_COLOR = "paleturquoise";
     public static final String PLAYER1_WINS_TEXT = "PLAYER 1 WINS!";
     public static final String PLAYER2_WINS_TEXT = "PLAYER 2 WINS!";
-    private static final String PRESS_ENTER_TO_START = "Press \"Enter\" to start new game";
+    private static final String PRESS_ENTER_TO_START = "Press \"1\" for 1 player game" +
+            System.lineSeparator() + "Press \"2\" for 2 player game" ;
+
     public static final String PRESS_SPACE_TO_RESTART = "Press \"Space\" to restart the game";
     public static final String PAUSED_TEXT = "Paused";
     private static final String PLAYER_1_CONTROLS = " Up - \"A\"" + System.lineSeparator() + "Down - \"Z\"";
@@ -133,7 +135,7 @@ public class TextFields {
         c1.setFont(Font.font(FONT_NAME, MIDDLE_FONT_SIZE));
         c1.fillProperty().set(Paint.valueOf(FONT_COLOR));
         c1.setTranslateX(SCREEN_WIDTH/2 - 115);
-        c1.setTranslateY(210 );
+        c1.setTranslateY(SCREEN_HEIGHT / 2 );
         return c1;
     }
 

@@ -8,16 +8,17 @@ import com.almasb.fxgl.settings.GameSettings;
 import controller.collisions.BallBatCollision;
 import controller.corrections.BallSpeedCorrection;
 import controller.game_cases.PauseFunction;
-import controller.key_actions.StartGameAction;
+import controller.key_actions.Start1PlGameAction;
+import controller.key_actions.Start2PlGameAction;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
+import model.Assets;
 import model.components.BackgroundInitializator;
 import model.components.Ballinitializer;
 import model.components.BatInitializer;
 import model.components.BoundsInitialization;
-import model.Assets;
 
 import static controller.collisions.BatBoundsCollision.getLeftBatCollision;
 import static controller.collisions.BatBoundsCollision.getRightBatCollision;
@@ -37,7 +38,7 @@ public class HockeyRunner extends GameApplication {
     public static final int FINAL_SCORE = 5;
     public static final int SCREEN_WIDTH = 1200;
     public static final int SCREEN_HEIGHT = 675;
-    public  static final int BAT_SPEED = 15;
+    public static final int BAT_SPEED = 15;
     private static final String TITLE = "Hockey";
     private static final String ICON_FILE = "icon.png";
     private static final String FONT_FILE_NAME = "Halogen Gas Lights.otf";
@@ -87,14 +88,16 @@ public class HockeyRunner extends GameApplication {
         initCollisions();
         ballSpeedCorrection = new BallSpeedCorrection();
         pauseFunction = new PauseFunction();
+
     }
 
 
     @Override
     protected void initInput() {
         input = getInputManager();
-        input.addAction(StartGameAction.getStartGameAction(), KeyCode.ENTER);
-    }
+        input.addAction(Start1PlGameAction.getStartGameAction(), KeyCode.DIGIT1);
+        input.addAction(Start2PlGameAction.getStartGameAction(), KeyCode.DIGIT2);
+            }
 
     @Override
     protected void initAssets() {
