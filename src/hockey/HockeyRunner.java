@@ -7,6 +7,7 @@ import com.almasb.fxgl.physics.PhysicsEntity;
 import com.almasb.fxgl.settings.GameSettings;
 import controller.collisions.BallBatCollision;
 import controller.corrections.BallSpeedCorrection;
+import controller.game_bot.BotControl;
 import controller.game_cases.PauseFunction;
 import controller.key_actions.Start1PlGameAction;
 import controller.key_actions.Start2PlGameAction;
@@ -20,8 +21,11 @@ import model.components.Ballinitializer;
 import model.components.BatInitializer;
 import model.components.BoundsInitialization;
 
+import java.util.logging.Level;
+
 import static controller.collisions.BatBoundsCollision.getLeftBatCollision;
 import static controller.collisions.BatBoundsCollision.getRightBatCollision;
+import static controller.game_bot.BotControl.*;
 import static controller.game_cases.RestartFunctions.*;
 import static controller.game_cases.ScoreCounter.countScore1;
 import static controller.game_cases.ScoreCounter.countScore2;
@@ -136,6 +140,7 @@ public class HockeyRunner extends GameApplication {
         setGameEnd();
         restartBall(getGameWorld(), assets);
         pauseFunction.pauseGame();
+        botScript();
 
     }
 
@@ -221,6 +226,7 @@ public class HockeyRunner extends GameApplication {
 
 
     public static void main(String[] args) {
+        log.setLevel(Level.WARNING);
         launch(args);
     }
 }

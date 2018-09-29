@@ -27,6 +27,7 @@ public class BatBoundsCollision extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity a, Entity b) {
+
         reboundBat();
     }
 
@@ -54,6 +55,5 @@ public class BatBoundsCollision extends CollisionHandler {
         if (p.getY() < HockeyRunner.SCREEN_HEIGHT / 2) bat.setLinearVelocity(0, 4);
         else bat.setLinearVelocity(0, -4);
     }
-
 
 }

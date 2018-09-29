@@ -3,12 +3,13 @@ package model.components;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import hockey.HockeyRunner;
 import model.Type;
+import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.BodyType;
 import model.Assets;
 
 public class BatInitializer {
 
-    private static final int BAT_HEIGHT = 84;
+    public static final int BAT_HEIGHT = 84;
     public static final int BAT_WIDTH = 29;
     public static final double LEFT_BAT_X = 26;
     public static final double RIGHT_BAT_X = HockeyRunner.SCREEN_WIDTH - 55;
@@ -26,7 +27,7 @@ public class BatInitializer {
         leftBat.setSceneView(assets.getAssets().loadTexture(LEFT_BAT_FILE));
         leftBat.setBodyType(BodyType.KINEMATIC);
         leftBat.setCollidable(true);
-        return leftBat;
+       return leftBat;
     }
 
     public static PhysicsEntity getRightBat(Assets assets) {
