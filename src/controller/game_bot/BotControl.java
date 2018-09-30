@@ -10,8 +10,8 @@ import static model.components.BoundsInitialization.HORIZONTAL_BOUND_HEIGHT;
 
 public class BotControl {
 
-    private static final double UPPER_BOUND = HORIZONTAL_BOUND_HEIGHT + 3;
-    private static final double LOWER_BOUND = SCREEN_HEIGHT - HORIZONTAL_BOUND_HEIGHT - 3;
+    private static final double UPPER_BOUND = HORIZONTAL_BOUND_HEIGHT + 10;
+    private static final double LOWER_BOUND = SCREEN_HEIGHT - HORIZONTAL_BOUND_HEIGHT - 10;
     private static boolean isLowerCollision = false;
     private static boolean isUpperCollision = false;
 
@@ -20,7 +20,7 @@ public class BotControl {
             // firstStrike();
             if (!isStartReadyStatus() && !isRestartReadyStatus()) ;
 
-            System.out.println(getBatCanterY());
+         //   System.out.println(getBatCanterY());
 
 
         }
@@ -34,6 +34,17 @@ public class BotControl {
 
         }
 
+    }
+
+
+
+
+
+    private static void move(double yCenter) {
+        if (!(getBatCanterY() > yCenter - 8 && getBatCanterY() < yCenter + 8)) {
+            if (yCenter - 25 < getBatCanterY()) moveUp(yCenter);
+            if (yCenter + 25 > getBatCanterY()) moveDown(yCenter);
+        }
     }
 
 
@@ -59,11 +70,6 @@ public class BotControl {
         }
         if (getBatCanterY() >= yCenter) getLeftBat().setLinearVelocity(0, 0);
         if (getBatLowerY() < LOWER_BOUND - 5) isLowerCollision = false;
-    }
-
-
-    private static void move(double yCenter) {
-
     }
 
 
