@@ -1,10 +1,16 @@
 package controller.game_bot;
 
 
+import com.almasb.fxgl.physics.PhysicsEntity;
 import controller.key_actions.Start1PlGameAction;
+import hockey.HockeyRunner;
+import javafx.geometry.Point2D;
 
-import static controller.game_cases.RestartFunctions.isRestartReadyStatus;
+import static controller.game_bot.FirstStrikeTimer.State;
+import static controller.game_bot.FirstStrikeTimer.getTimer;
+import static controller.key_actions.Start1PlGameAction.*;
 import static hockey.HockeyRunner.*;
+import static model.components.Ballinitializer.BALL_LEFT_POSITION;
 import static model.components.BatInitializer.BAT_HEIGHT;
 import static model.components.BoundsInitialization.HORIZONTAL_BOUND_HEIGHT;
 
@@ -14,13 +20,12 @@ public class BotControl {
     private static final double LOWER_BOUND = SCREEN_HEIGHT - HORIZONTAL_BOUND_HEIGHT - 10;
     private static boolean isLowerCollision = false;
     private static boolean isUpperCollision = false;
+    private static boolean isFirstStrikeReady = false;
+    private static final Point2D zero = new Point2D(0, 0);
 
     public static void botScript() {
-        if (Start1PlGameAction.isOnePlayerMode()) {
-            // firstStrike();
-            if (!isStartReadyStatus() && !isRestartReadyStatus()) ;
-
-         //   System.out.println(getBatCanterY());
+        if (isOnePlayerMode() && getBall().isActive()) {
+            firstStrike();
 
 
         }
@@ -29,15 +34,27 @@ public class BotControl {
 
 
     private static void firstStrike() {
-        if (!isStartReadyStatus() && !isRestartReadyStatus()) {
-
+        PhysicsEntity ball = HockeyRunner.getBall();
+        if (ball.getLinearVelocity().equals(zero) &&
+                ball.getX() == BALL_LEFT_POSITION.getX()) {
+                move(ball.getY());
 
         }
+
 
     }
 
 
+    private static void waitForFirstStrike() {
+        FirstStrikeTimer ft = getTimer();
+        System.out.println(ft.getState());
+        if (ft.getState() != State.RUNNABLE) {
+            ft.setPauseTime(3000);
+            ft.start();
+            System.out.println(ft.getState());
+        }
 
+    }
 
 
     private static void move(double yCenter) {
@@ -47,9 +64,7 @@ public class BotControl {
         }
     }
 
-
     private static void moveUp(double yCenter) {
-
         if (yCenter - BAT_HEIGHT / 2 < UPPER_BOUND) yCenter = UPPER_BOUND + BAT_HEIGHT / 2;
         if (getBatUpperY() <= UPPER_BOUND) isUpperCollision = true;
         if (getBatCanterY() > yCenter && !isUpperCollision) {
@@ -85,5 +100,7 @@ public class BotControl {
         return getLeftBat().getY() + BAT_HEIGHT / 2;
     }
 
-
+    public synchronized static void setIsFirstStrikeReady(boolean isFirstStrikeReady) {
+        BotControl.isFirstStrikeReady = isFirstStrikeReady;
+    }
 }

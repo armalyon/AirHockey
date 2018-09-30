@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 
-public class Utils {
+public class Utils extends Thread {
 
 
     public static void timer(int time){
@@ -14,6 +14,7 @@ public class Utils {
             t2 = (int) new Date().getTime();
         }
     }
+
 
 
 
