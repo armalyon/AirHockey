@@ -6,11 +6,11 @@ public class FirstStrikeTimer extends Thread {
 
 
     private int pauseTime;
-    private static FirstStrikeTimer instance = new FirstStrikeTimer();
+
     private static boolean isTimerWorks = false;
 
-    private FirstStrikeTimer() {
-
+    public FirstStrikeTimer(int pauseTime) {
+        this.pauseTime = pauseTime;
     }
 
     @Override
@@ -26,12 +26,5 @@ public class FirstStrikeTimer extends Thread {
 
     }
 
-    public static FirstStrikeTimer getTimer() {
-        return instance;
-    }
 
-
-    public void setPauseTime(int pauseTime) {
-        this.pauseTime = pauseTime;
-    }
 }

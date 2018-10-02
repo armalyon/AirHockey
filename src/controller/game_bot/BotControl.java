@@ -2,17 +2,16 @@ package controller.game_bot;
 
 
 import com.almasb.fxgl.physics.PhysicsEntity;
-import controller.key_actions.Start1PlGameAction;
 import hockey.HockeyRunner;
 import javafx.geometry.Point2D;
 
-import static controller.game_bot.FirstStrikeTimer.State;
-import static controller.game_bot.FirstStrikeTimer.getTimer;
-import static controller.key_actions.Start1PlGameAction.*;
+
+import static controller.key_actions.Start1PlGameAction.isOnePlayerMode;
 import static hockey.HockeyRunner.*;
 import static model.components.Ballinitializer.BALL_LEFT_POSITION;
 import static model.components.BatInitializer.BAT_HEIGHT;
 import static model.components.BoundsInitialization.HORIZONTAL_BOUND_HEIGHT;
+
 
 public class BotControl {
 
@@ -21,7 +20,9 @@ public class BotControl {
     private static boolean isLowerCollision = false;
     private static boolean isUpperCollision = false;
     private static boolean isFirstStrikeReady = false;
+    private static boolean isTimerWorks = false;
     private static final Point2D zero = new Point2D(0, 0);
+
 
     public static void botScript() {
         if (isOnePlayerMode() && getBall().isActive()) {
@@ -35,24 +36,27 @@ public class BotControl {
 
     private static void firstStrike() {
         PhysicsEntity ball = HockeyRunner.getBall();
+
         if (ball.getLinearVelocity().equals(zero) &&
                 ball.getX() == BALL_LEFT_POSITION.getX()) {
+
+            FirstStrikeTimer timer = new FirstStrikeTimer(1000);
+
+            if (!isTimerWorks && timer.getState()== Thread.State.NEW){
+                timer.start();
+                isTimerWorks = true;
+            }
+            if (isFirstStrikeReady) {
                 move(ball.getY());
-
+            }
         }
 
-
-    }
-
-
-    private static void waitForFirstStrike() {
-        FirstStrikeTimer ft = getTimer();
-        System.out.println(ft.getState());
-        if (ft.getState() != State.RUNNABLE) {
-            ft.setPauseTime(3000);
-            ft.start();
-            System.out.println(ft.getState());
+        if (ball.getX()> SCREEN_WIDTH/2 )
+          {
+            isTimerWorks = false;
+            isFirstStrikeReady = false;
         }
+
 
     }
 
