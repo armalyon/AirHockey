@@ -5,7 +5,6 @@ import com.almasb.fxgl.physics.PhysicsEntity;
 import hockey.HockeyRunner;
 import javafx.geometry.Point2D;
 
-
 import static controller.key_actions.Start1PlGameAction.isOnePlayerMode;
 import static hockey.HockeyRunner.*;
 import static model.components.Ballinitializer.BALL_LEFT_POSITION;
@@ -27,6 +26,8 @@ public class BotControl {
     public static void botScript() {
         if (isOnePlayerMode() && getBall().isActive()) {
             firstStrike();
+            moveToCenterAfterStrike();
+            moveToStrikePosition();
 
 
         }
@@ -34,30 +35,48 @@ public class BotControl {
     }
 
 
+
+    private static void moveToStrikePosition(){
+        if (getBall().getX()<SCREEN_WIDTH/6 && getBall().getLinearVelocity().getX()<0){
+            move(getBall().getY());
+        }
+
+    }
+
+
+
     private static void firstStrike() {
         PhysicsEntity ball = HockeyRunner.getBall();
 
         if (ball.getLinearVelocity().equals(zero) &&
                 ball.getX() == BALL_LEFT_POSITION.getX()) {
+            FirstStrikeTimer timer = new FirstStrikeTimer(1500);
 
-            FirstStrikeTimer timer = new FirstStrikeTimer(1000);
-
-            if (!isTimerWorks && timer.getState()== Thread.State.NEW){
+            if (!isTimerWorks && timer.getState() == Thread.State.NEW) {
                 timer.start();
                 isTimerWorks = true;
             }
             if (isFirstStrikeReady) {
                 move(ball.getY());
+
+            }
+
+            if (ball.getX() > BALL_LEFT_POSITION.getX()) {
+                isTimerWorks = false;
+                isFirstStrikeReady = false;
+
             }
         }
 
-        if (ball.getX()> SCREEN_WIDTH/2 )
-          {
-            isTimerWorks = false;
-            isFirstStrikeReady = false;
-        }
+    }
 
+    private static void moveToCenterAfterStrike() {
+        if (getBall().getLinearVelocity().getX() > 1 && getBall().getX() > SCREEN_WIDTH/5)
+            move(SCREEN_HEIGHT/2);
+    }
 
+    private static void stop() {
+        getLeftBat().setLinearVelocity(0, 0);
     }
 
 

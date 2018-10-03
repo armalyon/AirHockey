@@ -14,11 +14,11 @@ public class Ballinitializer {
 
     private static final String BALL_FILE = "ball.png";
     public final static int BALL_RADIUS = 14;
-    public final static Point2D BALL_RIGHT_POSITION = new Point2D(HockeyRunner.SCREEN_WIDTH - 67 - BALL_RADIUS, 220);
-    public final static Point2D BALL_LEFT_POSITION = new Point2D(49, 220);
+    public final static Point2D BALL_RIGHT_POSITION = new Point2D(HockeyRunner.SCREEN_WIDTH - 66 - BALL_RADIUS, 220);
+    public final static Point2D BALL_LEFT_POSITION = new Point2D(50, 220);
 
-    public final static Point2D BALL_RIGHT_ALT_POSITION = new Point2D(HockeyRunner.SCREEN_WIDTH - 67 - BALL_RADIUS, 420);
-    public final static Point2D BALL_LEFT_ALT_POSITION = new Point2D(49, 420);
+    public final static Point2D BALL_RIGHT_ALT_POSITION = new Point2D(HockeyRunner.SCREEN_WIDTH - 66 - BALL_RADIUS, 420);
+    public final static Point2D BALL_LEFT_ALT_POSITION = new Point2D(50, 420);
 
 
 
