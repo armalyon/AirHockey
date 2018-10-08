@@ -35,7 +35,6 @@ public class BotControl {
     }
 
 
-
     private static void moveToStrikePosition(){
         if (getBall().getX()<SCREEN_WIDTH/6 && getBall().getLinearVelocity().getX()<0){
             move(getBall().getY());
@@ -55,6 +54,7 @@ public class BotControl {
             if (!isTimerWorks && timer.getState() == Thread.State.NEW) {
                 timer.start();
                 isTimerWorks = true;
+
             }
             if (isFirstStrikeReady) {
                 move(ball.getY());
