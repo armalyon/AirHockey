@@ -2,12 +2,10 @@ package controller.game_bot;
 
 
 import com.almasb.fxgl.physics.PhysicsEntity;
-import controller.game_cases.PauseFunction;
-import controller.key_actions.PauseAction;
 import hockey.HockeyRunner;
 import javafx.geometry.Point2D;
 
-import static controller.key_actions.PauseAction.*;
+import static controller.key_actions.PauseAction.isPausePerformed;
 import static controller.key_actions.Start1PlGameAction.isOnePlayerMode;
 import static hockey.HockeyRunner.*;
 import static hockey.HockeyRunner.getLeftBat;
@@ -28,7 +26,7 @@ public class BotControl {
     private static final Point2D zero = new Point2D(0, 0);
     private static double strikePointY;
     private static boolean isStrikeCalculated;
-    private static final double CALC_BALL_POS = ((double) SCREEN_WIDTH) / 3;
+    private static final double CALC_BALL_POS = ((double) SCREEN_WIDTH) / 5;
     private static final double STRIKE_POS_X = LEFT_BAT_X + BAT_WIDTH;
 
 
@@ -47,12 +45,14 @@ public class BotControl {
     private static void calcStrikePosition() {
         PhysicsEntity ball = getBall();
         if (ball.getX() < CALC_BALL_POS && !isStrikeCalculated && ball.getLinearVelocity().getX() < 0) {
-            if (ball.getLinearVelocity().getY() == 0) { strikePointY = ball.getY();
+            if (ball.getLinearVelocity().getY() == 0) {
+                if (ball.getY() >= SCREEN_HEIGHT / 2) strikePointY = ball.getY() - BAT_HEIGHT / 2 - 1;
+                else strikePointY = ball.getY() + BAT_HEIGHT / 2 + 1;
 
-                }
-            else {
+            } else {
                 if (isNoRebounds(ball.getX(), ball.getY(), ball.getLinearVelocity().getY())) {
-                    strikePointY = calcY(ball.getX(), ball.getY(), ball.getLinearVelocity().getY());
+                    strikePointY = calcY(ball.getX(), ball.getY(), ball.getLinearVelocity().getY()) +
+                            randomOffset(0.8);
 
                 } else {
 
@@ -62,31 +62,33 @@ public class BotControl {
                     double x = ball.getX();
 
                     while (!isNoRebounds(x, y, speedY)) {
-
                         if (speedY < 0) {
                             x += ((y - UPPER_BOUND) / Math.abs(speedY)) * speedX;
                             y = UPPER_BOUND;
-
                         }
-
                         if (speedY > 0) {
-                            x += ((LOWER_BOUND - y - BALL_RADIUS*2)/Math.abs(speedY))*speedX;
-                            y = LOWER_BOUND - BALL_RADIUS*2;
-                            System.out.println(2);
+                            x += ((LOWER_BOUND - y - BALL_RADIUS * 2) / Math.abs(speedY)) * speedX;
+                            y = LOWER_BOUND - BALL_RADIUS * 2;
                         }
-
                         speedY *= -1;
                     }
-                    strikePointY = calcY(x, y, speedY);
-
+                    strikePointY = calcY(x, y, speedY) + randomOffset(1);
                 }
-
             }
-
             isStrikeCalculated = true;
 
         }
 
+    }
+
+    private static double randomOffset(double factor) {
+        double offset = factor * BAT_HEIGHT * Math.random();
+        int signFactor;
+        double x = Math.random();
+        if (x < 0.5) signFactor = -1;
+        else signFactor = 1;
+        offset *= signFactor;
+        return offset;
     }
 
 
