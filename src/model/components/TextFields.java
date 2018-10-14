@@ -14,6 +14,9 @@ public class TextFields {
     private static final String FONT_COLOR = "paleturquoise";
     public static final String PLAYER1_WINS_TEXT = "PLAYER 1 WINS!";
     public static final String PLAYER2_WINS_TEXT = "PLAYER 2 WINS!";
+    public static final String YOU_WIN_TEXT = "\t YOU WIN!";
+    public static final String COMPUTER_WINS_TEXT = "COMPUTER WINS!";
+
     private static final String PRESS_ENTER_TO_START = "Press \"1\" for 1 player game" +
             System.lineSeparator() + "Press \"2\" for 2 player game" ;
 

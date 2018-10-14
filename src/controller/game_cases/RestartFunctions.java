@@ -1,26 +1,24 @@
 package controller.game_cases;
 
 import com.almasb.fxgl.GameWorld;
-import javafx.beans.property.IntegerProperty;
-import javafx.scene.text.Text;
-import model.components.Ballinitializer;
-import model.Assets;
 import com.almasb.fxgl.physics.PhysicsEntity;
 import controller.key_actions.RestartGameAction;
+import javafx.beans.property.IntegerProperty;
+import javafx.scene.text.Text;
+import model.Assets;
+import model.components.Ballinitializer;
 
-
+import static controller.key_actions.Start1PlGameAction.isOnePlayerMode;
 import static hockey.HockeyRunner.*;
-import static model.components.TextFields.PLAYER1_WINS_TEXT;
-import static model.components.TextFields.PLAYER2_WINS_TEXT;
-import static model.components.TextFields.PRESS_SPACE_TO_RESTART;
+import static model.components.TextFields.*;
 
 public class RestartFunctions {
     private static boolean restartReadyStatus = false;
 
-    public static void restartBall( GameWorld gameWorld, Assets assets) {
+    public static void restartBall(GameWorld gameWorld, Assets assets) {
         if (RestartGameAction.getBallRestart()) {
             RestartGameAction.setBallRestart(false);
-            PhysicsEntity ball  = Ballinitializer.getBall(assets);
+            PhysicsEntity ball = Ballinitializer.getBall(assets);
             setBall(ball);
             gameWorld.addEntity(ball);
         }
@@ -47,9 +45,22 @@ public class RestartFunctions {
             PhysicsEntity ball = getBall();
             ball.setPosition(200, -200);
             getRestartText().setText(PRESS_SPACE_TO_RESTART);
-            if (score1.get()==FINAL_SCORE){
+            setWinText();
+        }
+    }
+
+
+    private static void setWinText() {
+        IntegerProperty score1 = getScore1();
+        if (!isOnePlayerMode()) {
+            if (score1.get() == FINAL_SCORE) {
                 getWinText().setText(PLAYER1_WINS_TEXT);
-            } else   getWinText().setText(PLAYER2_WINS_TEXT);
+            } else getWinText().setText(PLAYER2_WINS_TEXT);
+        } else {
+            if (score1.get() == FINAL_SCORE) {
+                getWinText().setText(COMPUTER_WINS_TEXT);
+            } else getWinText().setText(YOU_WIN_TEXT);
+
         }
     }
 

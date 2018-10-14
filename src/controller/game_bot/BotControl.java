@@ -36,7 +36,6 @@ public class BotControl {
             moveToCenterAfterStrike();
             moveToStrikePosition();
 
-
         }
 
     }
@@ -44,7 +43,7 @@ public class BotControl {
 
     private static void calcStrikePosition() {
         PhysicsEntity ball = getBall();
-        if (ball.getX() < CALC_BALL_POS && !isStrikeCalculated && ball.getLinearVelocity().getX() < 0) {
+            if (ball.getX() < CALC_BALL_POS && !isStrikeCalculated && ball.getLinearVelocity().getX() <= 0) {
             if (ball.getLinearVelocity().getY() == 0) {
                 if (ball.getY() >= SCREEN_HEIGHT / 2) strikePointY = ball.getY() - BAT_HEIGHT / 2 - 1;
                 else strikePointY = ball.getY() + BAT_HEIGHT / 2 + 1;
