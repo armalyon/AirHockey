@@ -39,7 +39,7 @@ import static model.components.TextFields.*;
 
 
 public class HockeyRunner extends GameApplication {
-    public static final int FINAL_SCORE = 1;
+    public static final int FINAL_SCORE = 5;
     public static final int SCREEN_WIDTH = 1200;
     public static final int SCREEN_HEIGHT = 675;
     public static final int BAT_SPEED = 15;
