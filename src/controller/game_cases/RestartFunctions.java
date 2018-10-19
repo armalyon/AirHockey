@@ -2,6 +2,7 @@ package controller.game_cases;
 
 import com.almasb.fxgl.GameWorld;
 import com.almasb.fxgl.physics.PhysicsEntity;
+import controller.game_bot.PointersTimer;
 import controller.key_actions.RestartGameAction;
 import javafx.beans.property.IntegerProperty;
 import javafx.scene.text.Text;
@@ -14,6 +15,8 @@ import static model.components.TextFields.*;
 
 public class RestartFunctions {
     private static boolean restartReadyStatus = false;
+    private static boolean textFlag = false;
+    private static boolean pointersFlag = false;
 
     public static void restartBall(GameWorld gameWorld, Assets assets) {
         if (RestartGameAction.getBallRestart()) {
@@ -25,17 +28,55 @@ public class RestartFunctions {
     }
 
     public static void startNewGame(boolean startReadyStatus) {
-        Text player1controls = getPlayer1controls();
-        Text player2controls = getPlayer2controls();
-        Text startText = getStartText();
-        Text pauseControlText = getPauseControlText();
-        if (!startReadyStatus) {
+
+        if (!startReadyStatus && !textFlag) {
+            Text player1controls = getPlayer1controls();
+            Text player2controls = getPlayer2controls();
+            Text startText = getStartText();
+            Text pauseControlText = getPauseControlText();
+
             player1controls.setText("");
             player2controls.setText("");
             startText.setText("");
             pauseControlText.setText("");
+            textFlag = true;
+        }
+        startPointers();
+
+
+    }
+
+    private static void startPointers() {
+
+        if (textFlag && !pointersFlag) {
+
+            Text leftPointer = getLeftPointer();
+            Text rightPointer = getRightPointer();
+            if (isOnePlayerMode()) {
+                leftPointer.setText(COMPUTER_POINTER);
+                rightPointer.setText(YOU_POINTER);
+
+            } else {
+                leftPointer.setText(PLAYER_1_POINTER);
+                rightPointer.setText(PLAYER_2_POINTER);
+            }
+            textFlag = false;
+            endPointers();
+
+
         }
     }
+
+
+    private static void endPointers() {
+        if (!pointersFlag) {
+            PointersTimer pointersTimer = new PointersTimer(1500);
+            pointersTimer.start();
+            pointersFlag = true;
+        }
+
+    }
+
 
     public static void setGameEnd() {
         IntegerProperty score1 = getScore1();
@@ -71,5 +112,9 @@ public class RestartFunctions {
 
     public static void setRestartReadyStatus(boolean restartReadyStatus) {
         RestartFunctions.restartReadyStatus = restartReadyStatus;
+    }
+
+    public static void setPointersFlag(boolean pointersFlag) {
+        RestartFunctions.pointersFlag = pointersFlag;
     }
 }

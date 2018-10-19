@@ -31,6 +31,32 @@ public class TextFields {
     private static final int SCORE_TEXT_Y = 60;
     private static final int SCORE_FONT_SIZE = 20;
     private static final int MIDDLE_FONT_SIZE = 40;
+    public static final String PLAYER_1_POINTER = "⟸ Player 1";
+    public static final String PLAYER_2_POINTER = "Player 2 ⟹";
+    public static final String COMPUTER_POINTER = "⟸ Computer";
+    public static final String YOU_POINTER = "\t\tYou ⟹";
+
+
+
+    public static Text initLeftPointer(){
+        Text leftPointer = new Text();
+        leftPointer.setFont(Font.font(FONT_NAME, MIDDLE_FONT_SIZE));
+        leftPointer.setTranslateY(SCREEN_HEIGHT/2+ 10);
+        leftPointer.setTranslateX(70);
+        leftPointer.fillProperty().set(Paint.valueOf(FONT_COLOR));
+
+        return leftPointer;
+    }
+
+    public static Text initRightPointer(){
+        Text rightPointer = new Text();
+        rightPointer.setFont(Font.font(FONT_NAME, MIDDLE_FONT_SIZE));
+        rightPointer.setTranslateY(SCREEN_HEIGHT/2 + 10);
+        rightPointer.setTranslateX(SCREEN_WIDTH - 350);
+        rightPointer.fillProperty().set(Paint.valueOf(FONT_COLOR));
+
+        return rightPointer;
+    }
 
 
     public static Text initScoreText() {

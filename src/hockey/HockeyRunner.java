@@ -39,6 +39,7 @@ import static model.components.TextFields.*;
 
 
 public class HockeyRunner extends GameApplication {
+    private static final String VERSION = "1.0";
     public static final int FINAL_SCORE = 5;
     public static final int SCREEN_WIDTH = 1200;
     public static final int SCREEN_HEIGHT = 675;
@@ -56,6 +57,8 @@ public class HockeyRunner extends GameApplication {
     private static boolean startReadyStatus = true;
     private static Text player1controls;
     private static Text player2controls;
+    private static Text leftPointer;
+    private static Text rightPointer;
     private static Text startText;
     private static Text winText;
     private static Text restartText;
@@ -68,6 +71,7 @@ public class HockeyRunner extends GameApplication {
     @Override
     protected void initSettings(GameSettings gameSettings) {
         gameSettings.setTitle(TITLE);
+        gameSettings.setVersion(VERSION);
         gameSettings.setWidth(SCREEN_WIDTH);
         gameSettings.setHeight(SCREEN_HEIGHT);
         gameSettings.setIconFileName(ICON_FILE);
@@ -127,8 +131,10 @@ public class HockeyRunner extends GameApplication {
         player2controls = initControls2Text();
         startText = initStartText();
         pauseControlText = initPauseControlText();
+        leftPointer = initLeftPointer();
+        rightPointer = initRightPointer();
         getGameScene().addUINodes(player1controls, player2controls,
-                startText, winText, restartText, pausetext, pauseControlText);
+                startText, winText, restartText, pausetext, pauseControlText, leftPointer, rightPointer);
     }
 
     @Override
@@ -181,6 +187,14 @@ public class HockeyRunner extends GameApplication {
 
     public static Text getWinText() {
         return winText;
+    }
+
+    public static Text getLeftPointer() {
+        return leftPointer;
+    }
+
+    public static Text getRightPointer() {
+        return rightPointer;
     }
 
     public static Text getRestartText() {
